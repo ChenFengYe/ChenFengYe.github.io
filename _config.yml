@@ -1,7 +1,7 @@
 # Site
-title: Halve
-description: Stylish, Two-Column Jekyll Theme
-url: https://taylantatli.github.io/Halve
+title: Chen Xin
+description: A Ph.D. Student of Computer Vision and Graphics
+url: https://ChenFengYe.github.io/Halve
 logo: halve.png                                       # Site logo
 locale: en_US
 
@@ -34,7 +34,7 @@ sass:
 twitter:            username
 #facebook:           username
 github:             username
-stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
+#stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
 #linkedin:          username
 #xing:              username
 #instagram:          username
