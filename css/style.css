@@ -293,13 +293,20 @@ nav ul li {
 	padding-top: 20px;
 }
 .paper_img {
-	/*float:left;*/
-	width: 800px;/*height:80px;*/    
+	text-align: center;
+	float: center;
+	/*height: 200px;*/    
+	/*height:80px;*/    
 }
 .paper_img img {
 	/*float:left;*/
+	text-align: center;
+	height: auto;
 	width: 100%;
-	padding-right: 20px;/*height:80px;*/    
+	padding-right: 20px;/*height:80px;*/
+	max-height: 200px;
+	max-width: 200px;
+	padding-left: 20px;
 }
 
 @media (max-width: 768px) {
