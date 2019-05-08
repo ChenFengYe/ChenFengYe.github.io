@@ -14,28 +14,28 @@
 	}
 </script>
 <!-- Custom Theme files -->
-<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="WebPage/css/style.css" type="text/css" rel="stylesheet" media="all">
 
 </head>
 <body>
+<dir class = "WrapperBody">
 <h1 id = "title"><center> AutoSweep: Recovering 3D Editable Objects <br> from a Single Photograph</h1>
 <h3><center><strong><a href="http://chenxin.tech">Xin Chen</a></strong>, &nbsp<a href="http://liyuwei.cc/">Yuwei Li</a>, &nbsp<a href="http://luoxi.tech/">Xi Luo</a>, &nbsp<a href="http://tianjiashao.com/">Tianjia Shao</a>, &nbsp<a href="http://vic.shanghaitech.edu.cn/vrvc/~yu/">Jingyi Yu</a>, &nbsp<a href="http://kunzhou.net/">Kun Zhou</a>, &nbsp<a href="http://youyizheng.net/">Youyi Zheng* </a></h3>
-<dir class = "WrapperBody">
-<p><img alt="figure" src="./image/AutoSweep_tesar.jpg" id = "Tesar"/></p>
+<p><img alt="figure" src="./WebPage/image/AutoSweep_tesar.jpg" id = "Tesar"/></p>
 <h1 id = "title1">Abstract</h1>
 <p>This paper presents a fully automatic framework for extracting editable 3D objects directly from a single photograph. Unlike previous methods which recover either depth maps, point clouds, or mesh surfaces, we aim to recover 3D objects with semantic parts and can be directly edited. We base our work on the assumption that most human-made objects are constituted by parts and these parts can be well represented by generalized primitives. Our work makes an attempt towards recovering two types of primitive-shaped objects, namely, generalized cuboids and generalized cylinders. Qualitative and quantitative experiments show that our algorithm can recover high quality 3D models and outperforms existing methods in both instance segmentation and 3D reconstruction.</p>
 <br>
 <p>[<a href="../AutoSweep_TVCG2018_paper.pdf">Paper</a>] [<a href="../AutoSweep_TVCG2018_video.mp4">Video</a>]</p>	
 <h1 id = "title1">Pipeline</h1>
-<p><img alt="figure" src="./image/AutoSweep_whole_pipeline.jpg"/>
+<p><img alt="figure" src="./WebPage/image/AutoSweep_whole_pipeline.jpg"/>
 The whole pipeline. Our method takes as input a single photograph and extracts its semantic part masks labeled as cylinder profile, cuboid profile, cylinder body, etc., which are then used in a sweeping procedure to construct a textured 3D model.</p>
 <br><br><br>
-<p><img alt="figure" src="./image/AutoSweep_network_pipeline.jpg"/>
+<p><img alt="figure" src="./WebPage/image/AutoSweep_network_pipeline.jpg"/>
 The network structure. The structure of our GeoNet is composed by an instance segmentation network (Mask R-CNN) and a deformable convolutional network. The net outputs instance masks labeled as semantic parts (profiles, bodies).</p>
 <h1 id = "title1">Dataset</h1>
 <h4>Download</h4>
 
-<p>You can download our dataset with <a href="xxx">this Onedrive link</a>.</p>
+<p>You can download our dataset with <a href="https://1drv.ms/u/s!AsWCggO4PIEBlJVGdJitcPsVop-hKg"><U>this Onedrive link</U></a>.</p>
 
 <h4>Part 1: Image</h4>
 
@@ -93,7 +93,7 @@ We use color to encode the instance and label information.</p>
 
 <p>This is further separated into 8183 training images and 3474 testing images.</p>
 <h1 id = "title1">Results</h1>
-<p><img alt="figure" src="./image/AutoSweep_results.jpg"/></p>
+<p><img alt="figure" src="./WebPage/image/AutoSweep_results.jpg"/></p>
 <h1 id = "title1">Citation</h1>
 <p>Please cite these papers in your publications if it helps your research:</p>
 
