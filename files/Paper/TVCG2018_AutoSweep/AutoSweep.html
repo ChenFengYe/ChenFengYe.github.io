@@ -19,7 +19,7 @@
 </head>
 <body>
 <dir class = "WrapperBody">
-<h1 id = "title"><center> AutoSweep: Recovering 3D Editable Objects <br> from a Single Photograph</h1>
+<h1 id = "title"><center>AutoSweep: Recovering 3D Editable Objects<br>from a Single Photograph</h1>
 <h3><center><strong><a href="http://chenxin.tech">Xin Chen<sup>1</sup></a></strong>, &nbsp<a href="http://liyuwei.cc/">Yuwei Li<sup>1</sup></a>, &nbsp<a href="http://luoxi.tech/">Xi Luo<sup>1</sup></a>, &nbsp<a href="http://tianjiashao.com/">Tianjia Shao<sup>2</sup></a>, &nbsp<a href="http://vic.shanghaitech.edu.cn/vrvc/~yu/">Jingyi Yu<sup>1</sup></a>, &nbsp<a href="http://kunzhou.net/">Kun Zhou<sup>3</sup></a>, &nbsp<a href="http://youyizheng.net/">Youyi Zheng<sup>3</sup> </a></h3>
 <h3><center>
   <a href="http://www.shanghaitech.edu.cn/"><sup>1</sup>ShanghaiTech University</a>, &nbsp; <a href="https://www.leeds.ac.uk/"><sup>2</sup>University of Leeds</a>, &nbsp; <a href="http://www.cad.zju.edu.cn/"><sup>3</sup>Zhejiang University</a>
@@ -42,7 +42,7 @@ The network structure. The structure of our GeoNet is composed by an instance se
 <hr>
 <h4>Download</h4>
 
-<p>You can download our dataset with <a href="https://1drv.ms/u/s!AsWCggO4PIEBlJVGdJitcPsVop-hKg"><U>this Onedrive link</U></a>.</p>
+<p>You can download our dataset with <a href="https://1drv.ms/u/s!AsWCggO4PIEBnJ03gUFbEytQErI8Nw?e=f9Iwkl"><U>this Onedrive link</U></a>.</p>
 
 <h4>Part 1: Image</h4>
 
@@ -99,6 +99,22 @@ We use color to encode the instance and label information.</p>
 <h4>Part 3: ImageSets</h4>
 
 <p>This is further separated into 8183 training images and 3474 testing images.</p>
+<h1 id = "title1">Code</h1>
+<hr>
+<p>You can visit the <a href="https://github.com/ChenFengYe/AutoSweep"><U>GithubPage</U></a> for code.
+<br>
+<br>
+<p>The code consists of two modules, as mentioned in our paper, the learning module (image to mask) and the graphics module (mask to 3d mesh). The first module follows the framework of FCIS and Mask RCNN. A common learning framework with Python. The second module is built based on Unity3D and our own framework. The purpose of the whole module is to sweep the profiles with a dynamic demo. I need to remind you that the code is not convenient for a beginner on 3D. It is really hard to configure this module, I sincerely suggest you refer to this code only.
+<br>
+<br>
+<p>The code might no longer be maintained. However, I still hope part of our work can give you help or inspiration. If you have any questions, please feel free to ask <a href="http://chenxin.tech"> me</a>.
+<br>
+<br>
+<p>Code scripts for second module:
+<p>AutoSweep_ObjectSnapping/Assets/BodyEngine.cs
+<p>AutoSweep_ObjectSnapping/Assets/FaceEngine.cs
+<p>AutoSweep_ObjectSnapping/Assets/GraphicsEngine.cs
+
 <h1 id = "title1">Results</h1>
 <hr>
 <p><img alt="figure" src="./WebPage/image/AutoSweep_results.jpg"/></p>
