@@ -295,11 +295,13 @@ nav ul li {
 .paper_img {
 	text-align: center;
 	float: center;
+	padding-top: 5px;
 	/*height: 200px;*/    
 	/*height:80px;*/    
 }
 .paper_img img {
 	/*float:left;*/
+	padding-top: 5px;
 	text-align: center;
 	height: auto;
 	width: 100%;
@@ -311,11 +313,13 @@ nav ul li {
 
 @media (max-width: 768px) {
 .paper_img img {
+	padding-top: 5px;
 	padding-right: 0px;
 	padding-bottom: 20px;
 }
 }
 .paper_img {
+	padding-top: 5px;
 	margin-right: 0px;
 	width: 100%;
 	height: auto;
