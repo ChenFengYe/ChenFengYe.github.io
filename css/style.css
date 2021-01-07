@@ -320,6 +320,12 @@ nav ul li {
 	width: 100%;
 	height: auto;
 }
+.people-content {
+	vertical-align: top;
+	float: left;
+	height: auto;
+}
+
 .paper_text {
 	/*float:right;*/
 	width: 80%;
