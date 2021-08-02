@@ -400,7 +400,7 @@ header {
 	padding: 6em 2.5em 0;
 }
 .banner-text-w3ls {
-	padding: 8em 4em 4em 4em;
+	padding: 3em 3em 3em 3em;
 	background: #f0f4f4;
 }
 .banner-text-w3ls h2 {
@@ -505,10 +505,10 @@ p.iner {
 	border-radius: 5px;
 }
 .wedo {
-	padding: 4em 4em;
+	padding: 3em 3em;
 	background: #ffffff;
 	text-align: left;
-	border-top: solid 2px #efefef;
+	border-top: solid 3px #efefef;
 }
 .contact_grid_right input[type="text"], .contact_grid_right input[type="email"], .contact_grid_right textarea {
 	outline: none;
@@ -865,8 +865,8 @@ section.gallery div {
 	color: #e7746f;
 }
 .paper-box {
-	margin-bottom: 10px;
-	padding: 10px 0;
+	margin-bottom: 6px;
+	padding: 6px 0;
 	transition: all 1s;
 	-moz-transition: all 1s;
 	/* Firefox 4 */
@@ -941,7 +941,8 @@ section.slide-wrapper {
 	font-size: 1.2em !important;
 }
 .banner-text-w3ls {
-	padding: 8em 2em 8em 2em;
+	padding: 3em 2em 3em 2em;
+	/*padding: 1em 1em 1em 1em;*/
 }
 .gallery {
 	padding: 2em 2em;
