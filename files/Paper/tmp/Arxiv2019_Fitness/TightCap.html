@@ -14,7 +14,7 @@
 	}
 </script>
 <!-- Custom Theme files -->
-<link href="ProjectPage/css/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
 
 </head>
 <body>
@@ -25,7 +25,7 @@
   <a href="http://www.shanghaitech.edu.cn/"><sup>1</sup>ShanghaiTech University</a>, &nbsp; <a href="https://www.dgene.com/cn/"><sup>2</sup>DGene</a>, &nbsp; <a href="http://www.ust.hk/"><sup>3</sup>Hong Kong University of Science and Technology</a>
 </center></h3>
 	
-<p><img alt="figure" src="./ProjectPage/image/TightCap_tesar.jpg" id = "Tesar"/></p>
+<p><img alt="figure" src="./image/TightCap_tesar.jpg" id = "Tesar"/></p>
 <h1 id = "title1">Abstract</h1>
 <hr>
 <p>We present a learning-based scheme for estimating clothing tightness as well as the human shape on clothed 3D human scans robustly and accurately. Our approach maps the clothed human geometry/appearance to a geometry image that we call clothed-GI. To align clothed-GI under different clothing, we extend the parametric human model and employ skeleton detection and warping for reliable alignment. For each pixel on the clothed-GI, we extract a feature vector including color/texture, position, normal, etc. and train a modified conditional GAN network for per-pixel tightness prediction using a comprehensive 3D clothing. Our technique significantly improves the accuracy of human shape prediction, especially under loose and fitted clothing. We further demonstrate using our results for human/clothing segmentation, cloth retargeting and animations.</p>
@@ -33,11 +33,11 @@
 <p>[<a href="https://arxiv.org/abs/1904.02601">ArxivPage</a>] [<a href="./TightCap_arxiv2020_paper.pdf">Paper</a>] [<a href="https://github.com/ChenFengYe/TightCap">Code</a>] [<a href="./TightCap_arxiv2020_video.mp4">Video</a>] [BibTex] </p>
 <h1 id = "title1">Pipeline</h1>
 <hr>
-<p><img alt="figure" src="./ProjectPage/image/TightCap_whole_pipeline.jpg"/>
+<p><img alt="figure" src="./image/TightCap_whole_pipeline.jpg"/>
 <br>
 The pipeline of TightCap. The first step is to warp our enhanced clothing-adapted SMPL with scanned mesh. Then, we deform warped mesh using Multi-Stage Alignment. After, we estimate the tightness map and clothing mask from mapped clothed-GI with Tightness Prediction. The final step, Multi-layer Reconstruction is to recover body shape from predicted tightness on the mesh, and segment cloth.</p>
 <!-- br><br><br>
-<p><img alt="figure" src="./ProjectPage/image/TightCap_network_pipeline.jpg"/>
+<p><img alt="figure" src="./image/TightCap_network_pipeline.jpg"/>
 The network structure. The structure of our GeoNet is composed by an instance segmentation network (Mask R-CNN) and a deformable convolutional network. The net outputs instance masks labeled as semantic parts (profiles, bodies).</p-->
 <h1 id = "title1">CTD Dataset</h1>
 <hr>
@@ -120,7 +120,7 @@ We use color to encode the instance and label information.</p>
 
 <h1 id = "title1">Results</h1>
 <hr>
-<p><img alt="figure" src="./ProjectPage/image/TightCap_results.jpg"/></p>
+<p><img alt="figure" src="./image/TightCap_results.jpg"/></p>
 <h1 id = "title1">Citation</h1>
 <hr>
 <p>Please cite this paper in your publications if it helps your research:</p>
