@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>SportsCap: Monocular 3D Human Motion Capture and Fine-grainedUnderstanding in Challenging Sports Videos, IJCV 2021 </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<!-- Meta tags for Zotero grab citation -->
+	<meta name="citation_title" content="SportsCap: Monocular 3D Human Motion Capture and Fine-grainedUnderstanding in Challenging Sports Videos">
+	<meta name="citation_author" content="Xin, Chen">
+	<meta name="citation_author" content="Anpei, Pang">
+	<meta name="citation_author" content="Wei, Yang">
+	<meta name="citation_author" content="Yuexin, Ma">
+	<meta name="citation_author" content="Lan, Xu">
+	<meta name="citation_author" content="Jingyi, Yu">
+	<meta name="citation_publication_date" content="2021">
+	<meta name="citation_conference_title" content="IJCV">
+	<meta name="citation_pdf_url" content="https://chenxin.tech/SportsCap.html">
+
+	<meta name="robots" content="index,follow">
+	<meta name="description" content="Markerless motion capture and understanding of professional non-daily human movements is an important yet unsolved task, which suffers from complex motion patterns and severe self-occlusion, especially for the monocular setting. In this paper, we propose SportsCap -- the first approach for simultaneously capturing 3D human motions and understanding fine-grained actions from monocular challenging sports video input. Our approach utilizes the semantic and temporally structured sub-motion prior in the embedding space for motion capture and understanding in a data-driven multi-task manner. To enable robust capture under complex motion patterns, we propose an effective motion embedding module to recover both the implicit motion embedding and explicit 3D motion details via a corresponding mapping function as well as a sub-motion classifier. Based on such hybrid motion information, we introduce a multi-stream spatial-temporal Graph Convolutional Network(ST-GCN) to predict the fine-grained semantic action attributes, and adopt a semantic attribute mapping block to assemble various correlated action attributes into a high-level action label for the overall detailed understanding of the whole sequence, so as to enable various applications like action assessment or motion scoring. Comprehensive experiments on both public and our proposed datasets show that with a challenging monocular sports video input, our novel approach not only significantly improves the accuracy of 3D human motion capture, but also recovers accurate fine-grained semantic action attributes.">
+	<link rel="author" href="https://chenxin.tech/"/>
+
+	<!-- Fonts and stuff -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/project.css" media="screen" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/iconize.css" />
+	<script src="js/google-code-prettify/prettify.js"></script>
+</head>
+
+<body>
+	<div id="content">
+		<div id="content-inner">
+			<div class="section logos"  style="text-align:center">
+				<a href="http://www.shanghaitech.edu.cn/" target="_blank"><img src="images/shanghaitech-logo.svg" height="60"></a>
+				<a href="http://vic.shanghaitech.edu.cn/" target="_blank"><img src="images/center-logo.png" height="60"></a>
+				<a href="https://www.ucas.ac.cn/" target="_blank"><img src="images/UCAS.jpg" height="60"></a>
+			</div>
+
+			<div class="section head">
+			
+				<h1>SportsCap: Monocular 3D Human Motion Capture and <br>Fine-grained Understanding in Challenging Sports Videos</h1>
+				<!-- <p><img alt="figure" src="./ProjectPage/image/AutoSweep_tesar.jpg" id = "Tesar"/></p> -->
+
+				<div class="authors">
+					<a href="http://chenxin.tech/" target="_blank">Xin Chen</a><sup>1,2</sup>&#160;&#160;					
+					Anqi Pang<sup>1,2</sup>&#160;&#160;
+					<a href="https://scholar.google.com/citations?user=fRjxdPgAAAAJ&hl=en" target="_blank">Wei Yang</a><sup>3</sup>&#160;&#160;
+					<a href="http://yuexinma.me/aboutme.html" target="_blank">Yuexin Ma</a><sup>1</sup>&#160;&#160;
+					<a href="http://xu-lan.com/" target="_blank">Lan Xu</a><sup>1</sup>&#160;&#160;
+					<a href="http://vic.shanghaitech.edu.cn/vrvc/en/people/jingyi-yu/" target="_blank">Jingyi Yu</a><sup>1</sup>&#160;&#160;
+				</div>
+
+				<div class="affiliations">
+					<sup>1</sup><a href="http://www.shanghaitech.edu.cn/" target="_blank">ShanghaiTech University</a> &#160;&#160;
+					<sup>2</sup><a href="https://www.leeds.ac.uk/" target="_blank">University of Chinese Academy of Sciences</a>&#160;&#160;
+					<sup>3</sup><a href="https://www.hust.edu.cn/" target="_blank">Huazhong University of Science and Technology</a>&#160;&#160;
+				</div>
+
+				<div class="venue">(<a href="http://cvpr2021.thecvf.com/" target="_blank">IJCV 2021 - International Journal of Computer Vision</a>)</div>
+				<!-- <div class="venue">(Special issue in human pose, motion, activities, and shape in 3d)</div> -->
+			</div>
+
+			<div class="section abstract">
+			</div>
+
+			<div class="section teaser">
+				<!-- <iframe width="640" height="360" src="data/video.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+				<!-- <iframe src="https://www.youtube.com/embed/HCC0z1WkQGc" allow="autoplay; encrypted-media" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="560" height="315" frameborder="0"></iframe> -->
+				<!-- <iframe src="data/video.mp4" allow="autoplay; encrypted-media" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="560" height="315" frameborder="0"></iframe> -->
+				<!-- data/video.mp4 -->
+				<iframe width="672" height="378" src="https://www.youtube.com/embed/TrqAaaX97KY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<!-- <iframe src="https://www.youtube.com/embed/TrqAaaX97KY" allow="autoplay; encrypted-media" preload="" muted="" allowfullscreen="" width="600" height="352" frameborder="0"></iframe>  -->
+				<!-- <video width="80%" playsinline="" playbackRate="5.0"  autoplay="autoplay" loop="loop" preload="" muted="" width="560" height="315"> -->
+					<!-- <source src="data/video.mp4" type="video/mp4"> -->
+				<!-- </video> -->
+				<p style="font-size:11px; text-align:center">
+					Download Video: <a href="data/video.mp4" target="_blank">HD</a> (MP4, 24 MB)
+				</p>
+			</div>
+
+			<div class="section abstract">
+				<h2>Abstract</h2>
+				<p>
+					Markerless motion capture and understanding of professional non-daily human movements is an important yet unsolved task, which suffers from complex motion patterns and severe self-occlusion, especially for the monocular setting. In this paper, we propose SportsCap -- the first approach for simultaneously capturing 3D human motions and understanding fine-grained actions from monocular challenging sports video input. Our approach utilizes the semantic and temporally structured sub-motion prior in the embedding space for motion capture and understanding in a data-driven multi-task manner. To enable robust capture under complex motion patterns, we propose an effective motion embedding module to recover both the implicit motion embedding and explicit 3D motion details via a corresponding mapping function as well as a sub-motion classifier. Based on such hybrid motion information, we introduce a multi-stream spatial-temporal Graph Convolutional Network(ST-GCN) to predict the fine-grained semantic action attributes, and adopt a semantic attribute mapping block to assemble various correlated action attributes into a high-level action label for the overall detailed understanding of the whole sequence, so as to enable various applications like action assessment or motion scoring. Comprehensive experiments on both public and our proposed datasets show that with a challenging monocular sports video input, our novel approach not only significantly improves the accuracy of 3D human motion capture, but also recovers accurate fine-grained semantic action attributes.
+				</p>
+			</div>
+
+			<div class="section downloads">
+				<h2>Downloads</h2>
+				<center>
+				<ul>
+					<li class="grid">
+						<div class = "griditem">
+							<a href="data/SportsCap.pdf" target="_blank" class="imageLink"><img src = "images/pdf.png"></a><br/>
+							Paper<br/>
+							<a href="data/SportsCap.pdf" target="_blank">PDF, 14 MB</a>
+						</div>
+					</li>
+					<li class="grid"> 
+						<div class = "griditem"> 
+						<a href="data/video.mp4" target="_blank" class="imageLink"><img src = "images/mp4.png"></a><br />
+						Video<br /> 
+						<a href="data/video.mp4" target="_blank">MP4, 24 MB</a>
+						<br/> 
+						</div>
+					</li>
+					<li class="grid"> 
+						<div class = "griditem"> 
+						<a href="https://chenxin.tech/SportsCap.html" target="_blank" class="imageLink"><img src = "images/dataset.png"></a><br />
+						Dataset, 17GB<br /> 
+						[<a href="https://drive.google.com/file/d/1hUlGglrlWdjZNFFQh2ck3UaMDL8sDwQv/view?usp=sharing" target="_blank">Part01</a> |<a href="https://drive.google.com/file/d/1NswiD-wpuAyHbSgdUCZ2s9QmVIFPcLjA/view?usp=sharing" target="_blank">Part02</a>] 
+						<!-- <a href="https://drive.google.com/file/d/1O62Tp-2pPncuKD8oKbkP_WZJcbj-f_ik/view?usp=sharing" target="_blank">Dataset, 2.8 GB</a>						 -->
+						<br/> 
+						</div>
+					</li>
+					<li class="grid"> 
+						<div class = "griditem"> 
+						<a href="https://chenxin.tech/SportsCap.html" target="_blank" class="imageLink"><img src = "images/github.png"></a><br />
+						Code<br />
+						<a href="https://github.com/ChenFengYe/SportsCap" target="_blank">Github</a>
+						<!-- <a href="https://github.com/ChenFengYe/AutoSweep" target="_blank">GitHub</a> -->
+						<br/> 
+						</div>
+					</li>					
+				</ul>
+				</center>
+			</div>
+			<br />
+			<div class="section abstract">
+				<h2>Dataset</h2>
+				<center>
+					<video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+						<source src="data/video_dataset.mp4" type="video/mp4">
+					</video>
+				</center>
+			</div>
+			<div class="section abstract">
+				<h2>Results on 3D human Shape Capture</h2>
+				<center>
+					<video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+						<source src="data/video_results_3d.mp4" type="video/mp4">
+					</video>
+				</center>
+			</div>
+			<div class="section abstract">
+				<h2>Results on 2D pose estimation and understanding</h2>
+				<center>
+					<video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+						<source src="data/video_results_2d.mp4" type="video/mp4">
+					</video>
+				</center>
+			</div>
+			<div class="section abstract">
+				<h2>Visualization on pose embedding spaces</h2><br>
+				<center>
+					<video width="70%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+						<source src="data/video_vis_feature.mp4" type="video/mp4">
+					</video>
+				</center>
+			</div>
+			<div class="section list">
+				<h2>Citation</h2>
+				<p><a href="data/bibtex.bib" target="_blank">BibTeX, 1 KB</a></p>
+				<div class="section bibtex">
+					<pre>
+@article{chen2021sportscap,
+  title={SportsCap: Monocular 3D Human Motion Capture and Fine-grained Understanding in Challenging Sports Videos},
+  author={Chen, Xin and Pang, Anqi and Yang, Wei and Ma, Yuexin and Xu, Lan and Yu, Jingyi},
+  journal={arXiv preprint arXiv:2104.11452},
+  year={2021}
+}				</div>
+			</div>
+<!-- 			<div class="section acknowledgments">
+				<h2>Acknowledgments</h2>
+				<p>
+					This work was funded by the ERC Consolidator Grant 4DRepLy (770784).
+				</p>
+			</div> -->
+
+			<div class="section contact">
+				<h2>Contact</h2>
+				If you have any question, please feel free to ask
+				Xin Chen, <a href='mailt&#111;&#58;chenxin2&#64;shanghaitech&#46;edu&#46;cn'>chenxin2&#64;shanghaitech&#46;edu&#46;cn.</a><br />
+			</div>
+
+			<!--<div class="section">
+				<hr class="smooth">
+				This page is <a href="http://www.zotero.org" target="_blank">Zotero</a> translator friendly. Page last updated 
+				<script type="text/javascript">
+					var m = "This page was last updated: " + document.lastModified;
+					var p = m.length-9;
+					document.writeln("<left>");
+					document.write(m.substring(p, 0) + ".");
+					document.writeln("</left>");
+				</script>
+				<a href="https://www.mpi-inf.mpg.de/imprint/">Imprint</a>. <a href="https://data-protection.mpi-klsb.mpg.de/inf/gvv.mpi-inf.mpg.de/projects/">Data Protection</a>.
+			</div> -->
+		</div>
+	</div>
+</body>
+</html>

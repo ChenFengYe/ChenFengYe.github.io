@@ -1,0 +1,137 @@
+<html lang="cx">
+<head>
+<title>AutoSweep ProjectPage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="keywords" content="" />
+<script>
+	addEventListener("load", function () {
+		setTimeout(hideURLbar, 0);
+	}, false);
+
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	}
+</script>
+<!-- Custom Theme files -->
+<link href="ProjectPage/css/style.css" type="text/css" rel="stylesheet" media="all">
+
+</head>
+<body>
+<dir class = "WrapperBody">
+<h1 id = "title"><center>AutoSweep: Recovering 3D Editable Objects<br>from a Single Photograph</h1>
+<h3><center><strong><a href="http://chenxin.tech">Xin Chen<sup>1</sup></a></strong>, &nbsp<a href="http://liyuwei.cc/">Yuwei Li<sup>1</sup></a>, &nbsp<a href="http://luoxi.tech/">Xi Luo<sup>1</sup></a>, &nbsp<a href="http://tianjiashao.com/">Tianjia Shao<sup>2</sup></a>, &nbsp<a href="http://vic.shanghaitech.edu.cn/vrvc/en/people/jingyi-yu/">Jingyi Yu<sup>1</sup></a>, &nbsp<a href="http://kunzhou.net/">Kun Zhou<sup>3</sup></a>, &nbsp<a href="http://youyizheng.net/">Youyi Zheng<sup>3</sup> </a></h3>
+<h3><center>
+  <a href="http://www.shanghaitech.edu.cn/"><sup>1</sup>ShanghaiTech University</a>, &nbsp; <a href="https://www.leeds.ac.uk/"><sup>2</sup>University of Leeds</a>, &nbsp; <a href="http://www.cad.zju.edu.cn/"><sup>3</sup>Zhejiang University</a>
+</center></h3>
+	
+<p><img alt="figure" src="./ProjectPage/image/AutoSweep_tesar.jpg" id = "Tesar"/></p>
+<h1 id = "title1">Abstract</h1>
+<hr>
+<p>This paper presents a fully automatic framework for extracting editable 3D objects directly from a single photograph. Unlike previous methods which recover either depth maps, point clouds, or mesh surfaces, we aim to recover 3D objects with semantic parts and can be directly edited. We base our work on the assumption that most human-made objects are constituted by parts and these parts can be well represented by generalized primitives. Our work makes an attempt towards recovering two types of primitive-shaped objects, namely, generalized cuboids and generalized cylinders. Qualitative and quantitative experiments show that our algorithm can recover high quality 3D models and outperforms existing methods in both instance segmentation and 3D reconstruction.</p>
+<br>
+<p>[<a href="./AutoSweep_TVCG2018_paper.pdf">Paper</a>] [<a href="./AutoSweep_TVCG2018_video.mp4">Video</a>] [<a href="./xin2018autosweep.bib">BibTex</a>]</p>	
+<h1 id = "title1">Pipeline</h1>
+<hr>
+<p><img alt="figure" src="./ProjectPage/image/AutoSweep_whole_pipeline.jpg"/>
+The whole pipeline. Our method takes as input a single photograph and extracts its semantic part masks labeled as cylinder profile, cuboid profile, cylinder body, etc., which are then used in a sweeping procedure to construct a textured 3D model.</p>
+<br><br><br>
+<p><img alt="figure" src="./ProjectPage/image/AutoSweep_network_pipeline.jpg"/>
+The network structure. The structure of our GeoNet is composed by an instance segmentation network (Mask R-CNN) and a deformable convolutional network. The net outputs instance masks labeled as semantic parts (profiles, bodies).</p>
+<h1 id = "title1">Dataset</h1>
+<hr>
+<h4>Download</h4>
+
+<p>You can download our dataset from <a href="https://drive.google.com/file/d/1O62Tp-2pPncuKD8oKbkP_WZJcbj-f_ik/view?usp=sharing"><U>the Google Drive link</U></a> or <a href="https://1drv.ms/u/s!AsWCggO4PIEBnJ03gUFbEytQErI8Nw?e=f9Iwkl"><U>the Onedrive link</U></a>.</p>
+
+<h4>Part 1: Image</h4>
+
+<p>This folder in our dataset is including 11657 images with cubes and cylinders. The real dataset contains about 6000 unannotated images from <a href="http://www.image-net.org/">ImageNet</a>, 774 annotated images from <a href="http://3dvision.princeton.edu/projects/2012/SUNprimitive/">Xiao et al.</a>, and 4883 images collected from the Internet.</p>
+
+<h4>Part 2: Annotation</h4>
+
+<p>Annotation of each image by segmentation
+label methods:
+We use color to encode the instance and label information.</p>
+
+<ul><li>Red channel: {10,20,...} represents {instance 1, instance 2,...}.</li><li>Blue channel: zero represents body, nonzero represents top face.</li><li>Red channel: 150 represents grip, 200 represents cylinder, 255 represents cube.</li></ul>
+
+<p>Example is like below:</p>
+
+<table border="1" cellspacing="0" cellpadding="0" align = "center" text-align = "center">
+    <tr>
+      <td align=center>Label</td>
+      <td align=center>Color</td>
+      <td align=center>instance ID</td>
+    </tr>
+    <tr>
+      <td>Cylinder - top face</td>
+      <td align=center>(10, 10, 200)</td>
+      <td align=center>1</td>
+    </tr>
+    <tr>
+      <td>Cylinder - top face</td>
+      <td align=center>(20, 20, 200)</td>
+      <td align=center>2</td>
+    </tr>
+    <tr>
+      <td>Cylinder - body</td>
+      <td align=center>(10, 0, 200)</td>
+      <td align=center>1</td>
+    </tr>
+    <tr>
+      <td>Cube - top face</td>
+      <td align=center>(10, 10, 255)</td>
+      <td align=center>1</td>
+    </tr>
+    <tr>
+      <td>Cube - body</td>
+      <td align=center>(10, 0, 255)</td>
+      <td align=center>1</td>
+    </tr>
+    <tr>
+      <td>Grip</td>
+      <td align=center>(10, 0, 150)</td>
+      <td align=center>1</td>
+    </tr>
+</table>
+
+<h4>Part 3: ImageSets</h4>
+
+<p>This is further separated into 8183 training images and 3474 testing images.</p>
+<h1 id = "title1">Code</h1>
+<hr>
+<p>You can visit the <a href="https://github.com/ChenFengYe/AutoSweep"><U>Github Page</U></a> for code.
+<br>
+<br>
+<p>The code consists of two modules, as mentioned in our paper, the learning module (image to mask) and the graphics module (mask to 3d mesh). The first module follows the framework of FCIS and Mask RCNN. A common learning framework with Python. The second module is built based on Unity3D and our own framework. The purpose of the second module is to sweep the profiles with a dynamic demo. <!--We need to remind you that the code is not convenient for a beginner on 3D. It is really hard to configure this module, I sincerely suggest you refer to this code only.-->
+<br>
+<br>
+<p>The code might no longer be maintained. However, we still hope part of our work can give you help or inspiration. If you have any questions, please feel free to ask <a href="http://chenxin.tech"> me</a>.
+<br>
+<br>
+<p>Code scripts for second module:
+<p>AutoSweep_ObjectSnapping/Assets/BodyEngine.cs
+<p>AutoSweep_ObjectSnapping/Assets/FaceEngine.cs
+<p>AutoSweep_ObjectSnapping/Assets/GraphicsEngine.cs
+
+<h1 id = "title1">Results</h1>
+<hr>
+<p><img alt="figure" src="./ProjectPage/image/AutoSweep_results.jpg"/></p>
+<h1 id = "title1">Citation</h1>
+<hr>
+<p>Please cite this paper in your publications if it helps your research:</p>
+<blockquote><p>@article{xin2018autosweep, <br>
+title={AutoSweep: Recovering 3D Editable Objects from a Single Photograph},<br>
+author={Xin, Chen and Li, Yuwei and Luo, Xi and Shao, Tianjia and Yu, Jingyi and Zhou, Kun and Zheng, Youyi},<br>
+journal={IEEE transactions on visualization and computer graphics},<br>
+year={2018},<br>
+publisher={IEEE}<br>
+}</p></blockquote>
+
+<h1 id = "title1">License</h1>
+<hr>
+AutoSweep dataset is freely available for free non-commercial use. For commercial purpose, please email to <a href="http://chenxin.tech"> Xin Chen</a> or <a href="http://youyizheng.net">Youyi Zheng</a>.
+</dir>
+</body>
+</html>

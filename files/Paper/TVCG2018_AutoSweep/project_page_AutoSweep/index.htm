@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>AutoSweep: Recovering 3D Editable Objects from a Single Photograph, TVCG 2018 </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<!-- Meta tags for Zotero grab citation -->
+	<meta name="citation_title" content="AutoSweep: Recovering 3D Editable Objects from a Single Photograph">
+	<meta name="citation_author" content="Xin, Chen">
+	<meta name="citation_author" content="Yuwei, Li">
+	<meta name="citation_author" content="Xi, Luo">
+	<meta name="citation_author" content="Tianjia, Shao">
+	<meta name="citation_author" content="Jingyi, Yu">
+	<meta name="citation_author" content="Kun, Zhou">
+	<meta name="citation_author" content="Youyi, Zheng">
+	<meta name="citation_publication_date" content="2018">
+	<meta name="citation_conference_title" content="IJCV">
+	<meta name="citation_pdf_url" content="https://chenxin.tech/AutoSweep.html">
+
+	<meta name="robots" content="index,follow">
+	<meta name="description" content="AutoSweep presents a fully automatic framework for extracting editable 3D objects directly from a single photograph. Unlike previous methods which recover either depth maps, point clouds, or mesh surfaces, we aim to recover 3D objects with semantic parts and can be directly edited. We base our work on the assumption that most human-made objects are constituted by parts and these parts can be well represented by generalized primitives. Our work makes an attempt towards recovering two types of primitive-shaped objects, namely, generalized cuboids and generalized cylinders. Qualitative and quantitative experiments show that our algorithm can recover high quality 3D models and outperforms existing methods in both instance segmentation and 3D reconstruction.">
+	<link rel="author" href="https://chenxin.tech/"/>
+
+	<!-- Fonts and stuff -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/project.css" media="screen" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/iconize.css" />
+	<script src="js/google-code-prettify/prettify.js"></script>
+</head>
+
+<body>
+	<div id="content">
+		<div id="content-inner">
+			<div class="section logos"  style="text-align:center">
+				<a href="http://www.shanghaitech.edu.cn/" target="_blank"><img src="images/shanghaitech-logo.svg" height="60"></a>
+				<a href="http://vic.shanghaitech.edu.cn/" target="_blank"><img src="images/center-logo.png" height="60"></a>
+				<a href="http://www.cad.zju.edu.cn/" target="_blank"><img src="images/zhejiang.png" height="60"></a>
+			</div>
+
+			<div class="section head">
+			
+				<h1>AutoSweep: Recovering 3D Editable Objects <br>from a Single Photograph</h1>
+				<!-- <p><img alt="figure" src="./ProjectPage/image/AutoSweep_tesar.jpg" id = "Tesar"/></p> -->
+
+				<div class="authors">
+					<a href="http://chenxin.tech/" target="_blank">Xin Chen</a><sup>1</sup>&#160;&#160;					
+					<a href="http://liyuwei.cc/" target="_blank">Yuwei Li</a><sup>1</sup>&#160;&#160;
+					<a href="http://luoxi.tech/" target="_blank">Xi Luo</a><sup>1</sup>&#160;&#160;
+					<a href="http://tianjiashao.com/" target="_blank">Tianjia Shao</a><sup>2</sup>&#160;&#160;
+					<a href="http://vic.shanghaitech.edu.cn/vrvc/en/people/jingyi-yu/" target="_blank">Jingyi Yu</a><sup>1</sup>&#160;&#160;
+					<a href="http://kunzhou.net/" target="_blank">Kun Zhou</a><sup>3</sup>&#160;&#160;
+					<a href="http://youyizheng.net/" target="_blank">Youyi Zheng</a><sup>3</sup>
+				</div>
+
+				<div class="affiliations">
+					<sup>1</sup><a href="http://www.shanghaitech.edu.cn/" target="_blank">ShanghaiTech University</a> &#160;&#160;
+					<sup>2</sup><a href="https://www.leeds.ac.uk/" target="_blank">University of Leeds</a>&#160;&#160;
+					<sup>3</sup><a href="http://www.cad.zju.edu.cn/" target="_blank">Zhejiang University</a>&#160;&#160;
+				</div>
+
+				<div class="venue">(<a href="http://cvpr2021.thecvf.com/" target="_blank">TVCG 2018 - IEEE Transactions on Visualization and Computer Graphics</a>)</div>
+				
+			</div>
+
+			<div class="section abstract">
+			</div>
+
+			<div class="section teaser">
+				<!-- <iframe width="640" height="360" src="data/video.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+				<!-- <iframe src="https://www.youtube.com/embed/HCC0z1WkQGc" allow="autoplay; encrypted-media" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="560" height="315" frameborder="0"></iframe> -->
+				<!-- <iframe src="data/video.mp4" allow="autoplay; encrypted-media" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="560" height="315" frameborder="0"></iframe> -->
+				<!-- <iframe src="data/video.mp4" allow="autoplay; encrypted-media" preload="" muted="" allowfullscreen="" width="560" height="315" frameborder="0"></iframe>  -->
+				<video width="80%" playsinline="" playbackRate="5.0"  autoplay="autoplay" loop="loop" preload="" muted="" width="560" height="315">
+					<source src="data/video.mp4" type="video/mp4">
+				</video>
+				<p style="font-size:11px; text-align:center">
+					Download Video: <a href="data/video.mp4" target="_blank">HD</a> (MP4, 4 MB)
+				</p>
+			</div>
+
+			<div class="section abstract">
+				<h2>Abstract</h2>
+				<p>
+					AutoSweep presents a fully automatic framework for extracting editable 3D objects directly from a single photograph. Unlike previous methods which recover either depth maps, point clouds, or mesh surfaces, we aim to recover 3D objects with semantic parts and can be directly edited. We base our work on the assumption that most human-made objects are constituted by parts and these parts can be well represented by generalized primitives. Our work makes an attempt towards recovering two types of primitive-shaped objects, namely, generalized cuboids and generalized cylinders. Qualitative and quantitative experiments show that our algorithm can recover high quality 3D models and outperforms existing methods in both instance segmentation and 3D reconstruction.
+				</p>
+			</div>
+
+			<div class="section downloads">
+				<h2>Downloads</h2>
+				<center>
+				<ul>
+					<li class="grid">
+						<div class = "griditem">
+							<a href="data/AutoSweep.pdf" target="_blank" class="imageLink"><img src = "images/pdf.png"></a><br/>
+							Paper<br/>
+							<a href="data/AutoSweep.pdf" target="_blank">PDF, 27 MB</a>
+						</div>
+					</li>
+					<li class="grid"> 
+						<div class = "griditem"> 
+						<a href="data/video.mp4" target="_blank" class="imageLink"><img src = "images/mp4.png"></a><br />
+						Video<br /> 
+						<a href="data/video.mp4" target="_blank">MP4, 4 MB</a>
+						<br/> 
+						</div>
+					</li>
+					<li class="grid"> 
+						<div class = "griditem"> 
+						<a href="https://drive.google.com/file/d/1O62Tp-2pPncuKD8oKbkP_WZJcbj-f_ik/view?usp=sharing" target="_blank" class="imageLink"><img src = "images/dataset.png"></a><br />
+						Dataset<br /> 
+						<a href="https://drive.google.com/file/d/1O62Tp-2pPncuKD8oKbkP_WZJcbj-f_ik/view?usp=sharing" target="_blank">Dataset, 2.8 GB</a>						
+						<br/> 
+						</div>
+					</li>
+					<li class="grid"> 
+						<div class = "griditem"> 
+						<a href="https://github.com/ChenFengYe/AutoSweep" target="_blank" class="imageLink"><img src = "images/github.png"></a><br />
+						Code<br /> 
+						<a href="https://github.com/ChenFengYe/AutoSweep" target="_blank">GitHub</a>
+						<br/> 
+						</div>
+					</li>					
+				</ul>
+				</center>
+			</div>
+			<br />
+			<div class="section abstract">
+				<h2>Gallery and Results</h2>
+				<center>
+					<!-- <img width="80%" > -->
+						<!-- <source src="images/AutoSweep_results.jpg" type="image/jpg"> -->
+					<!-- </img>					 -->
+					<img width="80%" alt="figure" src="images/AutoSweep_tesar.jpg"/><br><br />
+					<img width="80%" alt="figure" src="images/AutoSweep_results.jpg"/>
+				</center>
+			</div>
+			<div class="section abstract">
+				<h2>Approach</h2>
+				<center>
+					<!-- <img width="80%" > -->
+						<!-- <source src="images/AutoSweep_results.jpg" type="image/jpg"> -->
+					<!-- </img>					 -->
+					<img width="80%" alt="figure" src="images/AutoSweep_whole_pipeline.jpg"/><br><br />
+					<img width="80%" alt="figure" src="images/AutoSweep_network_pipeline.jpg"/>
+				</center>
+			</div>
+			<div class="section list">
+				<h2>Citation</h2>
+				<p><a href="data/bibtex.bib" target="_blank">BibTeX, 1 KB</a></p>
+				<div class="section bibtex">
+					<pre>
+@article{chen2018autosweep,
+  title={Autosweep: Recovering 3d editable objects from a single photograph},
+  author={Chen, Xin and Li, Yuwei and Luo, Xi and Shao, Tianjia and Yu, Jingyi and Zhou, Kun and Zheng, Youyi},
+  journal={IEEE transactions on visualization and computer graphics},
+  volume={26},
+  number={3},
+  pages={1466--1475},
+  year={2018},
+  publisher={IEEE}
+}				</div>
+			</div>
+<!-- 			<div class="section acknowledgments">
+				<h2>Acknowledgments</h2>
+				<p>
+					This work was funded by the ERC Consolidator Grant 4DRepLy (770784).
+				</p>
+			</div> -->
+
+			<div class="section contact">
+				<h2>Contact</h2>
+				AutoSweep dataset is freely available for free non-commercial use. For commercial purpose:<br />
+				Xin Chen, <a href='mailt&#111;&#58;chenxin2&#64;shanghaitech&#46;edu&#46;cn'>chenxin2&#64;shanghaitech&#46;edu&#46;cn</a>  <br />
+				Youyi Zheng, <a href='mailt&#111;&#58;youyizheng&#64;zju.edu.cn&#46;edu&#46;cn'>youyizheng&#64;zju&#46;edu&#46;cn</a>  
+			</div>
+
+			<!--<div class="section">
+				<hr class="smooth">
+				This page is <a href="http://www.zotero.org" target="_blank">Zotero</a> translator friendly. Page last updated 
+				<script type="text/javascript">
+					var m = "This page was last updated: " + document.lastModified;
+					var p = m.length-9;
+					document.writeln("<left>");
+					document.write(m.substring(p, 0) + ".");
+					document.writeln("</left>");
+				</script>
+				<a href="https://www.mpi-inf.mpg.de/imprint/">Imprint</a>. <a href="https://data-protection.mpi-klsb.mpg.de/inf/gvv.mpi-inf.mpg.de/projects/">Data Protection</a>.
+			</div> -->
+		</div>
+	</div>
+</body>
+</html>
