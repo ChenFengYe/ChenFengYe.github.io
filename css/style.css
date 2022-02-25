@@ -104,8 +104,8 @@ nav a {
 	color: #fff;
 	font-weight: 600;
 	letter-spacing: 1px;
-	text-transform: uppercase;
-	font-size: 15px;
+	/* text-transform: uppercase; */
+	font-size: 20px;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-moz-transition: 0.5s all;
@@ -294,8 +294,17 @@ nav ul li {
 }
 .paper_img {
 	text-align: center;
-	float: center;
+	/* float: left; */
 	padding-top: 5px;
+	/* vertical-align:middle; */
+	/*height: 200px;*/    
+	/*height:80px;*/    
+}
+.paper_content {
+	text-align: left;
+	/* float: left; */
+	padding-top: 5px;
+	/* vertical-align:middle; */
 	/*height: 200px;*/    
 	/*height:80px;*/    
 }
@@ -306,8 +315,19 @@ nav ul li {
 	height: auto;
 	width: 100%;
 	padding-right: 5px;/*height:80px;*/
-	max-height: 200px;
-	max-width: 180px;
+	max-height: 400px;
+	max-width: 300px;
+	padding-left: 5px;
+}
+.paper_img video {
+	/*float:left;*/
+	padding-top: 5px;
+	text-align: center;
+	height: auto;
+	width: 100%;
+	padding-right: 5px;/*height:80px;*/
+	max-height: 400px;
+	max-width: 300px;
 	padding-left: 5px;
 }
 
@@ -397,7 +417,10 @@ header {
 }
 .side_top {
 	text-align: right;
-	padding: 6em 2.5em 0;
+	padding: 4em 2.5em 0;
+}
+.side_top img {
+	max-width: 200px;
 }
 .banner-text-w3ls {
 	padding: 3em 3em 3em 3em;
@@ -864,13 +887,14 @@ section.gallery div {
 	border-radius: 100px;
 	color: #e7746f;
 }
-.paper-box {
+.paper_box {
 	margin-bottom: 6px;
 	padding: 6px 0;
 	transition: all 1s;
 	-moz-transition: all 1s;
 	/* Firefox 4 */
 	-webkit-transition: all 1s;
+	vertical-align:middle;
 	/* Safari and Chrome */
 	-o-transition: all 1s;/* Opera */
 }
@@ -1084,9 +1108,10 @@ section.slide-wrapper {
 	margin-bottom: 0px;
 	padding: 20px 0;
 }
-.paper-box {
+.paper_box {
 	margin-bottom: 0px;
 	padding: 10px 0;
+	/* vertical-align:middle; */
 }
 .wedo {
 	padding: 2em 1em;
