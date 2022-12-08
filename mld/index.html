@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executing your Commands via Motion Diffusion in Latent Space</title>
+  <link rel="icon" href="public/favicon.ico" mce_href="public/favicon.ico" type="image/x-icon">
+  <link href="src/css/bootstrap.min.css" rel="stylesheet">
+  <link href="src/css/slick.css" rel="stylesheet">
+  <link href="src/css/slick-theme.css" rel="stylesheet">
+  <link href="src/css/styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- banner -->
+  <section>
+    <div class="container">
+      <div class="row banner">
+        <!-- video banner -->
+        <!-- <div>
+          <video autoplay loop playsinline muted poster="public/banner.jpg" class="d-block w-100">
+            <source src="public/banner.mp4" type="video/mp4">
+            </source>
+          </video>
+        </div> -->
+        <!-- gif banner -->
+        <div align="center">
+          <img src="public/banner.gif" class="d-block " style="width:58%;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- highlight -->
+  <section class=" p-4 text-center justify-content-between align-items-center">
+    <div class="container">
+      <!-- project name -->
+      <div class="row">
+        <div class="col-12">
+          <h1 class="display-5">Executing your Commands via Motion Diffusion in Latent Space</h1>
+        </div>
+      </div>
+      <!-- authors -->
+      <div class="authors row mt-3 fs-5">
+        <div class="col-md-2 offset-md-1 ">
+          <a href="https://chenxin.tech">Xin Chen<sup>1</sup></a>
+        </div>
+        <div class="col-md-2">
+          Biao Jiang<sup>2</sup>
+        </div>
+        <div class="col-md-2">
+          <a href="https://scholar.google.com/citations?user=A6K6bkoAAAAJ&hl=en">Wen Liu<sup>1</sup></a>
+        </div>
+        <div class="col-md-2">
+          <a href="https://speedinghzl.github.io/">Zilong Huang<sup>1</sup></a>
+        </div>
+        <div class="col-md-2">
+          Bin Fu<sup>1</sup>
+        </div>
+        <div class="col-md-2 offset-md-3">
+          <a href="https://faculty.fudan.edu.cn/chentao1/zh_CN/">Tao Chen<sup>2</sup></a>
+        </div>
+        <div class="col-md-2">
+          <a href="https://sist.shanghaitech.edu.cn/2020/0707/c7499a53862/page.htm">Jingyi Yu<sup>3</sup></a>
+        </div>
+        <div class="col-md-2">
+          <a href="https://www.skicyyu.org/">Gang Yu<sup>1*</sup></a>
+        </div>
+      </div>
+      <!-- authors facilities -->
+      <div class="row mt-3 d-md-flex fs-4">
+        <div class="col-md-4 facilities ">
+          <img src="public/tencent.png" class="img-fluid"> <sup>1</sup>Tencent PCG
+        </div>
+        <div class="col-md-4 facilities">
+          <img src="public/Fudan_University_Logo.png" class="img-fluid"> <sup>2</sup>Fudan
+          University
+        </div>
+        <div class="col-md-4 facilities">
+          <img src="public/Logo_of_ShanghaiTech_University.png" class="img-fluid"> <sup>3</sup>ShanghaiTech
+          University
+        </div>
+      </div>
+      <!-- outlink buttoms -->
+      <div class="row mt-3">
+        <div class="col-md-12 mb-4">
+          <a type="button" class="btn btn-outline-secondary waves-effect rounded-0" href="https://baidu.com"><i
+              class="bi bi-journal"></i>
+            Paper</a>
+          <a type="button" class="btn btn-outline-secondary waves-effect rounded-0" href=" https://baidu.com"><i
+              class="bi bi-github"></i>
+            Code</a>
+          <a type="button" class="btn btn-outline-secondary waves-effect rounded-0" href=" https://baidu.com"><i
+              class="bi bi-collection"></i>
+            Gallery</a>
+        </div>
+      </div>
+      <hr class="divider" />
+    </div>
+  </section>
+
+  <!-- abstract -->
+  <section class="p-2 justify-content-between align-items-center">
+    <div class="container">
+      <div class="row">
+        <!-- <video autoplay loop playsinline muted poster="public/teaser.jpg">
+          <source src="public/teaser.mp4" type="video/mp4">
+          </source>
+        </video> -->
+        <div class="text-container">
+          <h2 class="mt-3">Abstract</h2>
+          <p class="text-justify fs-6">
+            <!-- We study a challenging task, conditional human motion generation, which produces plausible human motion
+            sequences according to various conditional inputs, such as action classes or textual descriptors. -->
+            Since human
+            motions are highly diverse and have a property of quite different distribution from conditional modalities,
+            such
+            as textual descriptors in natural languages, it is hard to learn a probabilistic mapping from the desired
+            conditional modality to human motions, the raw motion data from the motion capture
+            system
+            might be redundant in sequences and contain noises; directly modeling the joint distribution over the raw
+            motion
+            sequences and conditional modalities would need a heavy computational overhead and might result in artifacts
+            introduced by the captured noises.
+
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <img class="w-100" src="public/teaser.png">
+            </div>
+          </div>
+          </p>
+
+          Our proposed <strong>Motion Latent Diffusion model (MLD)</strong> could produce vivid motion sequences (left)
+          conforming
+          to
+          the
+          given conditional inputs and substantially reduce the computational overhead (right) in both the training and
+          inference
+          stages. Extensive experiments on various human motion generation tasks demonstrate that our MLD achieves
+          significant improvements over other SOTAs among extensive human motion generation tasks,
+          with
+          <strong>two orders of magnitude faster</strong> than previous diffusion models.
+          </p>
+          <h2 class="mt-3">Method</h2>
+          To learn a better representation of the various human motion sequences,
+          we
+          first design a powerful Variational AutoEncoder (VAE) and arrive at a representative and low-dimensional
+          latent
+          code for a human motion sequence.
+          <p class="text-justify fs-6">
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <img class="w-100" src="public/network.png">
+            </div>
+          </div>
+          </p>
+          Then, instead of using a diffusion model to establish the connections
+          between
+          the raw motion and the conditional inputs, we propose motion latent-based diffusion models to learn
+          a
+          better probabilistic mapping from the conditions to the representative motion latent codes.
+          </p>
+        </div>
+      </div>
+      <div class="pt-2">
+        <hr class="divider" />
+      </div>
+    </div>
+  </section>
+
+  <!-- compositional video -->
+  <!-- <section class="p-4 justify-content-between align-items-center">
+    <div class="container">
+      <h2><b>Generate 3D motions from text prompts!</b></h2>
+      <div class="row compositional captioned_videos">
+        <div class="col-sm-8 text">
+          <p class="selectable left" id="compositional_tags_depth_0"></p>
+        </div>
+        <div class="col-sm-4 my-auto">
+          <div class="video-compare-container">
+            <video id="compositionalVideo" class="video" autoplay loop playsinline muted>
+              <div class="screen" id="compositionalScreen"></div>
+              <source id="compositionalVideoSrc" src="public/photo_none_none.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="pt-4">
+        <hr class="divider" />
+      </div>
+    </div>
+  </section> -->
+
+  <!-- carousel -->
+  <section class="p-4">
+    <div class="container">
+      <h2><b>Example generated motions from texts</b></h2>
+      <div class="row mx-auto my-auto justify-content-center text-center">
+        <div class="slick-carousel">
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image1.png">
+              <source src="public/text2motion/media1.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"the person was doing a cool walk"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image2.png">
+              <source src="public/text2motion/media2.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"walking forward with legs wide apart"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image3.png">
+              <source src="public/text2motion/media3.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"a person walks forward, turns, <br>then sits, then stands and walks back"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image4.png">
+              <source src="public/text2motion/media4.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"a person gets down on all fours <br>and starting crawling around"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image5.png">
+              <source src="public/text2motion/media5.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"this person walks forward, turns <br>then walks back"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image6.png">
+              <source src="public/text2motion/media6.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"a person jumps forwards <br>and turns left in mid air"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image7.png">
+              <source src="public/text2motion/media7.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"someone who is waiving to a person"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image8.png">
+              <source src="public/text2motion/media8.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"a person doing jumping jacks"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image9.png">
+              <source src="public/text2motion/media9.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"a person jogs straight forward"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image10.png">
+              <source src="public/text2motion/media10.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"a person lifts up their left arm <br>to the side"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image11.png">
+              <source src="public/text2motion/media11.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"a person walks in a circle to their right"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/text2motion/image12.png">
+              <source src="public/text2motion/media12.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"a person walks around and stops"</h6>
+          </div>
+        </div>
+      </div>
+      <div class="pt-4">
+        <hr class="divider" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- carousel -->
+  <section class="p-4">
+    <div class="container">
+      <h2><b>Example generated motions from action labels</b></h2>
+      <div class="row mx-auto my-auto justify-content-center text-center">
+        <div class="slick-carousel">
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image1.png">
+              <source src="public/action2motion/media1.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"warm up"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image2.png">
+              <source src="public/action2motion/media2.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"warm up"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image3.png">
+              <source src="public/action2motion/media3.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"drink"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image4.png">
+              <source src="public/action2motion/media4.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"drink"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image5.png">
+              <source src="public/action2motion/media5.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"lift dumbbell"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image6.png">
+              <source src="public/action2motion/media6.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"lift dumbbell"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image7.png">
+              <source src="public/action2motion/media7.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"eat"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image8.png">
+              <source src="public/action2motion/media8.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"eat"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image9.png">
+              <source src="public/action2motion/media9.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"boxing"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image10.png">
+              <source src="public/action2motion/media10.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"boxing"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image11.png">
+              <source src="public/action2motion/media11.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"throw"</h6>
+          </div>
+          <div class="slick-item">
+            <video autoplay loop playsinline muted height=255px poster="public/action2motion/image12.png">
+              <source src="public/action2motion/media12.mp4" type="video/mp4">
+              </source>
+            </video>
+            <h6>"throw"</h6>
+          </div>
+        </div>
+      </div>
+      <div class="pt-4">
+        <hr class="divider" />
+      </div>
+    </div>
+  </section>
+
+  <!-- video -->
+  <section class="p-4 justify-content-between align-items-center">
+    <div class="container">
+      <h2><b>Text-to-Motion comparisons</b></h2>
+      <div class="row">
+        <video controls autoplay muted loop poster="public/MLD_Compare_Text.png">
+          <source src="public/MLD_Compare_Text.mp4" type="video/mp4">
+          </source>
+        </video>
+      </div>
+      <div class="pt-4">
+        <hr class="divider" />
+      </div>
+    </div>
+  </section>
+
+  <!-- video -->
+  <section class="p-4 justify-content-between align-items-center">
+    <div class="container">
+      <h2><b>Action-to-Motion comparisons</b></h2>
+      <div class="row">
+        <video controls autoplay muted loop poster="public/MLD_Compare_Action.png">
+          <source src="public/MLD_Compare_Action.mp4" type="video/mp4">
+          </source>
+        </video>
+      </div>
+      <div class="pt-4">
+        <hr class="divider" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper -->
+  <section class="p-4 justify-content-between align-items-center">
+    <div class="container">
+      <h2><b>Paper</b></h2>
+      <hr>
+      <div>
+        <div class="list-group">
+          <a href="https://arxiv.org/abs/xxxx" class="list-group-item">
+            <img src="public/paper.jpg" style="width:100%; margin-right:-20px; margin-top:0px;">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- citation -->
+  <section class="p-4 justify-content-between align-items-center">
+    <div class="container">
+      <h2><b>Citation</b></h2>
+      <div class="row bg-light p-4">
+        <code>
+              @article{chen2022mld,<br>                
+              &nbsp; author = {Xin, Chen and Jiang, Biao and Liu, Wen and Huang, Zilong and Fu, Bin and Chen, Tao and Yu, Jingyi and Yu, Gang},<br>
+              &nbsp; title  = {Executing your Commands via Motion Diffusion in Latent Space},<br>
+              &nbsp; journal = {arXiv},<br>
+              &nbsp; year   = {2022},<br>
+          }</code>
+      </div>
+    </div>
+  </section>
+
+  <script src="src/js/bootstrap.bundle.min.js"></script>
+  <script src="src/js/jquery-3.6.1.min.js"></script>
+  <script src="src/js/slick.min.js"></script>
+  <script src="src/js/slider.js"></script>
+  <script src="src/js/compositionalVideo.js"></script>
+</body>
+
+<!-- more -->
+
+</html>

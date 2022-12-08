@@ -1,0 +1,236 @@
+.container {
+  /* max-width: 768px; */
+  max-width: 1100px;
+}
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Arial, 'Varela Round', 'Source Sans Pro', Calibri, Candara, Arial,
+    sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+} */
+
+.display-5 {
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+}
+
+.authors,
+h6 {
+  font-family: Lato, sans-serif;
+}
+
+p {
+  font-family: Roboto, sans-serif;
+}
+
+.banner {
+  filter: invert(57%) sepia(93%) saturate(310%) hue-rotate(1deg) brightness(92%) contrast(90%);
+  margin-top: -1rem;
+  margin-bottom: -2.5rem;
+}
+
+.text-container {
+  /* opacity: 0.7; */
+  margin-top: 2em;
+  background-color: var(--bs-gray-200);
+}
+
+.caption {
+  font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua',
+    Georgia, serif;
+  margin-top: 4px;
+}
+
+/* Bootstrap 5 tweak: do not underline links unless hovered over */
+a:not([class*='btn']) {
+  text-decoration: none;
+}
+
+a:not([class*='btn']):hover {
+  text-decoration: underline;
+}
+
+.facilities img {
+  height: 2rem;
+  display: inline-block;
+}
+
+/* response adjust */
+/* @media only screen and (max-width: 600px) {
+  .news,
+  .citation {
+    margin-left: 0;
+  }
+  .citation h4 {
+    font-size: 14px;
+  }
+  .citation ul {
+    font-size: 12px;
+  }
+  .authors h5 {
+    font-size: 20px;
+  }
+  .authors h6 {
+    font-size: 16px;
+    padding-bottom: 6px;
+  }
+  .show_wide {
+    display: none;
+  }
+} */
+
+/* compositional */
+.compositional .text .selectable:last-child {
+  margin-bottom: 0;
+}
+
+.compositional .text .selectable span {
+  padding: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  /* margin-top: 4px; */
+}
+
+.compositional .text .selectable span:first-child {
+  margin-left: 0;
+}
+
+.compositional .text .selectable span:hover {
+  cursor: pointer;
+}
+
+.compositional .text .selectable span:not(:last-child)::after {
+  content: '|';
+  padding: 2px 2px 2px 8px;
+  margin-right: -2px;
+  margin-left: 2px;
+  background-color: white;
+  color: rgb(161, 161, 161);
+}
+
+.compositional .text .selectable span:active {
+  cursor: pointer;
+  background: rgb(171, 218, 191) !important;
+}
+
+.compositional.video {
+  width: 100%;
+}
+
+.compositional .text .selectable span.hidden {
+  display: none !important;
+  /* color: rgb(161, 161, 161) !important; */
+  /* background: white !important; */
+  /* cursor: default !important; */
+}
+
+.compositional .text .selectable span:not(.selected) {
+  font-weight: 300;
+  color: rgb(50, 50, 50);
+  /* background: rgb(200, 200, 200); */
+  /* color: blue; */
+}
+
+.compositional .text .selectable span:not(.selected):hover {
+  background: rgb(194, 247, 215);
+}
+
+/* .compositional .text .selectable span.active { */
+.compositional .text .selectable span.selected {
+  color: #055ada;
+  background: rgb(194, 247, 215);
+  /* font-weight: bold; */
+}
+
+.compositional .video-compare-container {
+  /* background-color: black; */
+  width: 100%;
+  max-width: 256px;
+  margin-right: auto;
+  margin-left: auto;
+  transition: opacity 0.75s ease-in;
+}
+
+@media screen and (max-width: 575px) {
+  .video-compare-container {
+    padding-top: 32px;
+  }
+}
+
+/* .compositional .text .selectable span.active::before {
+  content: '\a';
+  white-space: pre;
+  background-color: white !important;
+} */
+/* .compositional .text .selectable span.selected {
+  border: 2px black;
+} */
+
+/*!*
+* Slick Custom Theme
+*/
+.slick-carousel .slick-item {
+  margin: 1em 1em;
+}
+
+.slick-carousel .slick-item video {
+  border: 5px solid var(--bs-gray-500);
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+}
+
+.slick-carousel .slick-item h6 {
+  margin-top: 1em;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+  content: '';
+}
+
+.slick-arrow {
+  width: 25px;
+  height: 25px;
+  z-index: 5;
+  border-top: 3px solid var(--bs-gray-500);
+  border-right: 3px solid var(--bs-gray-500);
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+
+.slick-arrow:hover {
+  opacity: 0.5;
+}
+
+.slick-prev {
+  left: -25px;
+  transform: rotate(225deg);
+}
+
+.slick-next {
+  right: -25px;
+  transform: rotate(45deg);
+}
+
+.slick-dots li button:before {
+  font-family: 'slick';
+  font-size: 35px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  opacity: 0.25;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+}
