@@ -497,7 +497,7 @@ h2.w3_head, h3.w3_head {
 	font-weight: 400;
 	color: #787878;
 	font-size: 1.5em;
-	letter-spacing: 0.075em;
+	letter-spacing: 0.04em;
 	line-height: 1.35em;
 }
 p.main_p {
@@ -532,6 +532,20 @@ p.iner {
 	background: #ffffff;
 	text-align: left;
 	border-top: solid 3px #efefef;
+}
+.news {
+	padding-top: 0em;
+	padding: 0em 3em 3em 3em;
+	/* background: #ffffff; */
+	text-align: left;
+	/* border-top: solid 3px #efefef; */
+}
+.server {
+	padding-top: 0em;
+	padding: 0em 3em 3em 3em;
+	background: #ffffff;
+	text-align: left;
+	/* border-top: solid 3px #efefef; */
 }
 .contact_grid_right input[type="text"], .contact_grid_right input[type="email"], .contact_grid_right textarea {
 	outline: none;
