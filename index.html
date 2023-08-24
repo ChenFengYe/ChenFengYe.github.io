@@ -16,6 +16,8 @@
     }
   </script>
   <!-- Custom Theme files -->
+  <link href="css/layout.min.css" rel="stylesheet" type="text/css" />
+
   <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
   <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
   <!-- font-awesome icons -->
@@ -23,7 +25,21 @@
   <!-- //Custom Theme files -->
   <!-- online-fonts -->
   <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
   <!-- //online-fonts -->
+
+  <!-- PAGE LEVEL PLUGIN STYLES -->
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- THEME STYLES -->
+
+  <!-- FONT STYLES -->
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"> -->
+
+  <!-- Favicon -->
+  <!-- <link rel="shortcut icon" href="favicon.ico"/> -->
+
 </head>
 
 <body>
@@ -51,8 +67,9 @@
             <!--<li><a href="index.html">Home</a></li-->
             <li class="mt-sm-0"><a href="#about" class="scroll">Bio</a></li>
             <!-- <li class="mt-sm-3"><a href="./Art.html" class="scroll">Art</a></li> -->
-            <li class="mt-sm-3"><a href="#services" class="scroll">Services</a></li>
-            <li class="mt-sm-3"><a href="#publication" class="scroll">Publications</a></li>
+            <li class="mt-sm-3"><a href="#services" class="scroll">Service</a></li>
+            <li class="mt-sm-3"><a href="#publication" class="scroll">Publication</a></li>
+            <li class="mt-sm-3"><a href="#project" class="scroll">Project</a></li>
             <li class="mt-sm-3"><a href="#experience" class="scroll">Experience</a></li>
             <!-- <li class="mt-sm-3"><a href="#skill" class="scroll">Skills</a></li> -->
           </ul>
@@ -97,11 +114,17 @@
           <font color="#f33" size="5"><b>News</b></font>
           </p>
           <!-- <li>[2022.11]&ensp; Submit four4 Papers.</li> -->
-          <li>[2023.07]&ensp; 1 paper accepted at <a href="https://iccv2023.thecvf.com/"><font color="#f33"><b>ICCV 2023</b></font></a>.</li>
-          <li>[2023.02]&ensp; 2 papers accepted at  <a href="https://cvpr2023.thecvf.com/"><font color="#f33"><b>CVPR 2023</b></font></a>.</li>
+          <li>[2023.07]&ensp; 1 paper accepted at <a href="https://iccv2023.thecvf.com/">
+              <font color="#f33"><b>ICCV 2023</b></font>
+            </a>.</li>
+          <li>[2023.02]&ensp; 2 papers accepted at <a href="https://cvpr2023.thecvf.com/">
+              <font color="#f33"><b>CVPR 2023</b></font>
+            </a>.</li>
           <li>[2022.02]&ensp; Join Tencent as a Research Scientist.</li>
           <li>[2022.01]&ensp; Receive my Ph.D. degree.</li>
-          <li>[2021.10]&ensp; TightCap will be presented at ACM <a href="https://s2022.siggraph.org/"><font color="#f33"><b>SIGGRAPH 2022</b></font></a>.</li>
+          <li>[2021.10]&ensp; TightCap will be presented at ACM <a href="https://s2022.siggraph.org/">
+              <font color="#f33"><b>SIGGRAPH 2022</b></font>
+            </a>.</li>
           <!-- <li>[2021.07]&ensp; TightCap is accepted by TOG. Dataset is released.</li>
           <li>[2021.06]&ensp; SportsCap is accepted by IJCV. Dataset is released.</li> -->
         </div>
@@ -119,7 +142,7 @@
     </section>
     <section class="publication" id="publication">
       <div class="container-fluid py-lg-1">
-        <h3 class="w3_head mb-5">Selected Publications <font size="5"><a href="./Publication.html">(Complete List…)</a>
+        <h3 class="w3_head mb-5">Selected Publications <font size="5"><a href="./Publication.html">(Complete list…)</a>
           </font>
         </h3>
         <!-- <h3 class="w3_head mb-5">Selected Publications (<a href="./Publication.html">Complete List…</a>)</h3> -->
@@ -144,7 +167,10 @@
               <!-- <p class="text-left">We present TightCap, a data-driven scheme to capture both the human shape and dressed garments accurately with only a single 3D human scan. </p> -->
               <p>[<a href="https://motion-gpt.github.io/">Project</a>]
                 [<a href="https://arxiv.org/abs/2306.14795" target=_blank>Paper</a>]
-                [<a href="https://github.com/OpenMotionLab/MotionGPT" target=_blank>Code</a>] <a href="https://github.com/OpenMotionLab/MotionGPT" target=_blank><img alt="GitHub stars" style="vertical-align: middle" src="https://img.shields.io/github/stars/OpenMotionLab/MotionGPT?style=social"></a>
+                [<a href="https://github.com/OpenMotionLab/MotionGPT" target=_blank>Code</a>] <a
+                  href="https://github.com/OpenMotionLab/MotionGPT" target=_blank><img alt="GitHub stars"
+                    style="vertical-align: middle"
+                    src="https://img.shields.io/github/stars/OpenMotionLab/MotionGPT?style=social"></a>
               </p>
             </div>
             <!-- .Service-content ends here -->
@@ -155,12 +181,14 @@
             </div>
             <!-- .Icon ends here -->
             <div class="col-md-9 col-12 paper_content">
-              <h4><strong>Michelangelo</strong>: Conditional 3D Shape Generation based on Shape-Image-Text Aligned Latent Representation<br>
+              <h4><strong>Michelangelo</strong>: Conditional 3D Shape Generation based on Shape-Image-Text Aligned
+                Latent Representation<br>
               </h4>
-              <p>Zibo Zhao*, <a
-                href="https://scholar.google.com/citations?user=A6K6bkoAAAAJ&hl=en">Wen Liu</a>*, <strong>Xin Chen</strong>, Xianfang Zeng, Rui Wang, Pei Cheng, Bin Fu, <a
-                href="https://faculty.fudan.edu.cn/chentao1/zh_CN/">Tao Chen</a>,<a href="https://www.skicyyu.org/">Gang Yu</a>, <a
-                href="https://scholar.google.com.sg/citations?user=fe-1v0MAAAAJ&hl=en">Shenghua Gao</a>
+              <p>Zibo Zhao*, <a href="https://scholar.google.com/citations?user=A6K6bkoAAAAJ&hl=en">Wen Liu</a>*,
+                <strong>Xin Chen</strong>, Xianfang Zeng, Rui Wang, Pei Cheng, Bin Fu, <a
+                  href="https://faculty.fudan.edu.cn/chentao1/zh_CN/">Tao Chen</a>,<a
+                  href="https://www.skicyyu.org/">Gang Yu</a>, <a
+                  href="https://scholar.google.com.sg/citations?user=fe-1v0MAAAAJ&hl=en">Shenghua Gao</a>
               </p>
               <p>
                 <font color="#000000"><b>Arxiv</b></font>
@@ -169,7 +197,10 @@
               <!-- <p class="text-left">We present TightCap, a data-driven scheme to capture both the human shape and dressed garments accurately with only a single 3D human scan. </p> -->
               <p>[<a href="https://neuralcarver.github.io/michelangelo/">Project</a>]
                 [<a href="https://arxiv.org/abs/2306.17115" target=_blank>Paper</a>]
-                [<a href="https://github.com/NeuralCarver/Michelangelo" target=_blank>Code</a>]<a href="https://github.com/NeuralCarver/Michelangelo" target=_blank><img alt="GitHub stars" style="vertical-align: middle" src="https://img.shields.io/github/stars/NeuralCarver/Michelangelo?style=social"></a>
+                [<a href="https://github.com/NeuralCarver/Michelangelo" target=_blank>Code</a>]<a
+                  href="https://github.com/NeuralCarver/Michelangelo" target=_blank><img alt="GitHub stars"
+                    style="vertical-align: middle"
+                    src="https://img.shields.io/github/stars/NeuralCarver/Michelangelo?style=social"></a>
               </p>
             </div>
             <!-- .Service-content ends here -->
@@ -180,10 +211,12 @@
             </div>
             <!-- .Icon ends here -->
             <div class="col-md-9 col-12 paper_content">
-              <h4>A Large-Scale Outdoor Multi-modal Dataset and Benchmark for Novel View Synthesis and Implicit Scene Reconstruction<br>
+              <h4>A Large-Scale Outdoor Multi-modal Dataset and Benchmark for Novel View Synthesis and Implicit Scene
+                Reconstruction<br>
               </h4>
               <p>Chongshan Lu, Fukun Yin, <strong>Xin Chen</strong>, <a
-                href="https://faculty.fudan.edu.cn/chentao1/zh_CN/">Tao Chen</a>, <a href="https://www.skicyyu.org/">Gang Yu</a>, Jiayuan Fan
+                  href="https://faculty.fudan.edu.cn/chentao1/zh_CN/">Tao Chen</a>, <a
+                  href="https://www.skicyyu.org/">Gang Yu</a>, Jiayuan Fan
               </p>
               <p>
                 <font color="#000000"><b>ICCV 2023</b></font>
@@ -192,11 +225,14 @@
               <!-- <p class="text-left">We present TightCap, a data-driven scheme to capture both the human shape and dressed garments accurately with only a single 3D human scan. </p> -->
               <p>[<a href="https://ommo.luchongshan.com/">Project</a>]
                 [<a href="https://arxiv.org/abs/2301.06782" target=_blank>Paper</a>]
-                [<a href="https://github.com/luchongshan/OMMO" target=_blank>Code</a>]<a href="https://github.com/luchongshan/OMMO" target=_blank><img alt="GitHub stars" style="vertical-align: middle" src="https://img.shields.io/github/stars/luchongshan/OMMO?style=social"></a>
+                [<a href="https://github.com/luchongshan/OMMO" target=_blank>Code</a>]<a
+                  href="https://github.com/luchongshan/OMMO" target=_blank><img alt="GitHub stars"
+                    style="vertical-align: middle"
+                    src="https://img.shields.io/github/stars/luchongshan/OMMO?style=social"></a>
               </p>
             </div>
             <!-- .Service-content ends here -->
-          </div>          
+          </div>
           <div class="row paper_box">
             <div class="col-md-3 col-12 paper_img"> <img src="files/Paper/CVPR23_MLD/teaser.png" width="90%"
                 playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid">
@@ -218,7 +254,10 @@
               <!-- <p class="text-left">We present TightCap, a data-driven scheme to capture both the human shape and dressed garments accurately with only a single 3D human scan. </p> -->
               <p>[<a href="https://chenxin.tech/mld">Project</a>]
                 [<a href="https://arxiv.org/abs/2212.04048" target=_blank>Paper</a>]
-                [<a href="https://github.com/ChenFengYe/motion-latent-diffusion" target=_blank>Code</a>]<a href="https://github.com/ChenFengYe/motion-latent-diffusion" target=_blank><img alt="GitHub stars" style="vertical-align: middle" src="https://img.shields.io/github/stars/ChenFengYe/motion-latent-diffusion?style=social"></a>
+                [<a href="https://github.com/ChenFengYe/motion-latent-diffusion" target=_blank>Code</a>]<a
+                  href="https://github.com/ChenFengYe/motion-latent-diffusion" target=_blank><img alt="GitHub stars"
+                    style="vertical-align: middle"
+                    src="https://img.shields.io/github/stars/ChenFengYe/motion-latent-diffusion?style=social"></a>
               </p>
             </div>
             <!-- .Service-content ends here -->
@@ -231,7 +270,8 @@
             <div class="col-md-9 col-12 paper_content">
               <h4>End-to-End 3D Dense Captioning with Vote2Cap-DETR<br>
               </h4>
-              <p>Sijin Chen, <a href="https://hongyuanzhu.github.io/">Hongyuan Zhu</a>, <strong>Xin Chen</strong>, Yinjie
+              <p>Sijin Chen, <a href="https://hongyuanzhu.github.io/">Hongyuan Zhu</a>, <strong>Xin Chen</strong>,
+                Yinjie
                 Lei, <a href="https://faculty.fudan.edu.cn/chentao1/zh_CN/">Tao Chen</a>, <a
                   href="https://www.skicyyu.org/">Gang Yu</a><br>
               </p>
@@ -268,7 +308,10 @@
                   href="https://arxiv.org/abs/1904.02601">Arxiv</a>]
                 [<a href="files/Paper\TOG2021_TightCap\project_page_TightCap\data\TightCap.pdf" target=_blank>Paper</a>]
                 [<a href="files/Paper\TOG2021_TightCap\project_page_TightCap\data\video.mp4" target=_blank>Video</a>]
-                [<a href="files\Paper\TOG2021_TightCap\project_page_TightCap\data\bibtex.html" target=_blank>BibTex</a>]<a href="https://github.com/ChenFengYe/TightCap" target=_blank><img alt="GitHub stars" style="vertical-align: middle" src="https://img.shields.io/github/stars/ChenFengYe/TightCap?style=social"></a>
+                [<a href="files\Paper\TOG2021_TightCap\project_page_TightCap\data\bibtex.html"
+                  target=_blank>BibTex</a>]<a href="https://github.com/ChenFengYe/TightCap" target=_blank><img
+                    alt="GitHub stars" style="vertical-align: middle"
+                    src="https://img.shields.io/github/stars/ChenFengYe/TightCap?style=social"></a>
               </p>
             </div>
             <!-- .Service-content ends here -->
@@ -296,7 +339,10 @@
                 [<a href="https://arxiv.org/abs/2104.11452">Arxiv</a>]
                 [<a href="files\Paper\IJCV2020_Sport\project_page_SportsCap\data\SportsCap.pdf">Paper</a>] [<a
                   href="files\Paper\IJCV2020_Sport\project_page_SportsCap\data\video.mp4" target=_blank>Video</a>] [<a
-                  href="files\Paper\IJCV2020_Sport\project_page_SportsCap\data\bibtex.html" target=_blank>BibTex</a>]<a href="https://github.com/ChenFengYe/SportsCap" target=_blank><img alt="GitHub stars" style="vertical-align: middle" src="https://img.shields.io/github/stars/ChenFengYe/SportsCap?style=social"></a>
+                  href="files\Paper\IJCV2020_Sport\project_page_SportsCap\data\bibtex.html" target=_blank>BibTex</a>]<a
+                  href="https://github.com/ChenFengYe/SportsCap" target=_blank><img alt="GitHub stars"
+                    style="vertical-align: middle"
+                    src="https://img.shields.io/github/stars/ChenFengYe/SportsCap?style=social"></a>
               </p>
             </div>
             <!-- .Service-content ends here -->
@@ -456,10 +502,166 @@
           </div>
         </div>
     </section>
+    <!-- project -->
+    <section class="wedo" id="project">
+      <div class="project">
+        <h3 class="w3_head mb-1">Projects<font size="5"> <a href="./index.html">(More projects…)</a>
+          </font>
+        </h3>
+        <div class="row service_w3top mt-5">
+          <div class="col-xl-12">
+            <!-- Masonry Grid -->
+            <div class="masonry-grid">
+                <div class="masonry-grid-item col-xs-4 col-sm-4 col-lg-4 mr-0">
+                  <!-- Work -->
+                  <div class="work">
+                    <div class="work-overlay">
+                      <!-- <img class="full-width img-responsive" src="project/img/image1.jpg" alt="Portfolio Image"> -->
+                      <video src="files/Paper/NIPS23_MotionGPT/teaser.mp4" playsinline="" autoplay="autoplay"
+                        loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid">
+                        <!-- <img class="full-width img-responsive" src="project/img/image1.jpg" alt="Portfolio Image"> -->
+                    </div>
+                    <div class="work-content">
+                      <h4 class="color-white margin-b-5">MotionGPT:Motion-Language Generations</h4>
+                      <p class="color-white margin-b-0 fs-6"> A unified and user-friendly motion-language model to learn the semantic coupling of two modalities and generate high-quality motions and text descriptions on multiple motion tasks.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="masonry-grid-item col-xs-2 col-sm-2 col-lg-2 ml-0 mr-2">
+                  <!-- Work -->
+                  <div class="work">
+                    <div class="work-overlay">
+                      <img class="full-width img-responsive" src="project/img/image14.jpg" alt="Portfolio Image">
+                    </div>
+                    <div class="work-content">
+                      <p class="color-white margin-b-5">Motion Latent Diffusion Models</p>
+                      <!-- <p class="color-white margin-b-0 fs-6">My team develop a purpose-built capture stage, and proprietary reconstruction software. We make it possible to record performances and convert them into 3D sequences viewable from any angle.</p> -->
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- raw 01 - col 02 -->
+                <div class="masonry-grid-item col-xs-4 col-sm-4 col-lg-4 mr-0">
+                  <!-- Work -->
+                  <div class="work">
+                    <div class="work-overlay">
+                      <video src="project/img/media3_2.mp4" playsinline="" autoplay="autoplay"
+                      loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid">
+                    </div>
+                    <div class="work-content">
+                      <h4 class="color-white margin-b-5">Human-Object Motion Capture</h4>
+                      <p class="color-white margin-b-0 fs-6"> Using 13 infrared cameras for complex motion capture. We collected a complex motion dataset to assist challenging monocular motion capture for sports video.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="masonry-grid-item col-xs-2 col-sm-2 col-lg-2">
+                  <!-- Work -->
+                  <div class="work">
+                    <div class="work-overlay">
+                      <img class="full-width img-responsive" src="project/img/image12_2.png" alt="Portfolio Image">
+                    </div>
+                    <div class="work-content">
+                      <h4 class="color-white margin-b-5">Light Stage</h4>
+                      <p class="color-white fs-6">Multi-view light stage system for MoCap and 3D Reconstruction.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <!-- Masonry Grid -->
+            <div class="masonry-grid">
+              <div class="masonry-grid-item col-xs-2 col-sm-2 col-lg-2">
+                <!-- Work -->
+                <div class="work">
+                  <div class="work-overlay">
+                    <video src="project/img/media7.mp4" playsinline="" autoplay="autoplay"
+                      loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid">
+                  </div>
+                  <div class="work-content">
+                    <h5 class="color-white margin-b-5">Dynamic 3D Mesh Player</h5>
+                    <p class="color-white margin-b-0 fs-6">Stand-alone development work for free-view browsing on 4D scans, which supports 3D mesh rendering, free-angle viewpoint change, Poisson Surface Reconstruction.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="masonry-grid-item col-xs-2 col-sm-2 col-lg-2 ml-0">
+                <!-- Work -->
+                <div class="work">
+                  <div class="work-overlay">
+                    <video src="project/img/media2_2.mp4" playsinline="" autoplay="autoplay"
+                      loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid">
+                  </div>
+                  <div class="work-content">
+                    <p class="color-white margin-b-0 fs-6">I am as a performer for boxing.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="masonry-grid-item col-xs-2 col-sm-2 col-lg-2 ml-0 mr-2">
+                <!-- Work -->
+                <div class="work">
+                  <div class="work-overlay">
+                    <img class="full-width img-responsive" src="project/img/image1.jpg" alt="Portfolio Image">
+                  </div>
+                  <div class="work-content">
+                    <h5 class="color-white margin-b-5">Multi-view Dome System</h5>
+                    <p class="color-white margin-b-0 fs-6">Using more than 72 cameras for dynamic human reconstruction.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- raw 01 - col 02 -->
+              <div class="masonry-grid-item col-xs-2 col-sm-2 col-lg-2">
+                <!-- Work -->
+                <div class="work">
+                  <div class="work-overlay">
+                    <video src="project/img/media4_2.mp4" playsinline="" autoplay="autoplay"
+                    loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid">
+                  </div>
+                  <div class="work-content">
+                    <p class="color-white margin-b-0 fs-6">Poping result with free view-points.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="masonry-grid-item col-xs-2 col-sm-2 col-lg-2">
+                <!-- Work -->
+                <div class="work">
+                  <div class="work-overlay">
+                    <video src="project/img/media5.mp4" playsinline="" autoplay="autoplay"
+                    loop="loop" preload="" muted="" alt="Popup Image" class="img-fluid">
+                  </div>
+                  <div class="work-content">
+                    <p class="color-white margin-b-5">Avatar with high fidelity clothes and face.</p>
+                  </div>
+                </div>
+              </div>
+              <space>
+              <div class="masonry-grid-item col-xs-2 col-sm-2 col-lg-2">
+                <!-- Work -->
+                <div class="work">
+                  <div class="work-overlay">
+                    <img class="full-width img-responsive" src="project/img/image8.jpeg" alt="Portfolio Image">
+                  </div>
+                  <div class="work-content">
+                    <h5 class="color-white margin-b-5">Dome System for static objects</h5>
+                    <p class="color-white margin-b-5">Using more than 80 cameras for multi-view stereo reconstruction. Lead the reconstruction project and aim to build a large 3D mesh sequences dataset.</p>
+                    
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+·
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- experience -->
     <section class="wedo" id="experience">
       <div class="experience">
-        <h3 class="w3_head mb-1">Experience</h3>
+        <h3 class="w3_head mb-1">Experiences</h3>
         <div class="row service_w3top mt-5">
           <div class="col-xl-12">
             <div class="d-flex experience-box">
@@ -479,17 +681,17 @@
                   <h4> CSIG YouTu Lab -Research Scientist Intern</h4>
                   <h4>Nov. 2020 - Mar. 2021</h4>
                 </div>
-                <p>I have been working at Tencent, Shanghai and received <strong>Tencent STAR Award</strong> 2023.</p>
-                <p>I work as a research scientist intern at <a href="https://open.youtu.qq.com/#/open">Tencent YouTu
-                    Lab</a> in 2020 for researching on the 3D human body reconstruction.</p>
+                <p>I am working at Tencent, Shanghai and received <strong>Tencent STAR Award</strong> 2023.</p>
+                <p>I was a research scientist intern at <a href="https://open.youtu.qq.com/#/open">Tencent YouTu
+                    Lab</a> in 2020 focuing on the 3D human body reconstruction.</p>
                 <br>
               </div>
               <!-- .Service-content ends here -->
             </div>
             <!-- <div class="d-flex experience-box"> -->
-              <!-- <div class="icon"><span class="fa fa-briefcase"></span> </div> -->
-              <!-- .Icon ends here -->
-              <!-- <div class="service-content">
+            <!-- <div class="icon"><span class="fa fa-briefcase"></span> </div> -->
+            <!-- .Icon ends here -->
+            <!-- <div class="service-content">
                 <div class="d-md-flex justify-content-between">
                   <h4><a href="https://www.dgene.com/cn/">DGene Digital Technology Inc. - 上海叠境数字</a></h4>
                   <h4> Jul. 2018 - Dec. 2019</h4>
@@ -500,7 +702,7 @@
                   leading the mobile virtual fitting project.</p>
                 <br>
               </div> -->
-              <!-- .Service-content ends here -->
+            <!-- .Service-content ends here -->
             <!-- </div> -->
           </div>
         </div>
@@ -603,8 +805,8 @@
         <li> <i class="fa-li fa fa-check"></i> Latex, Markdown</li>
         <li> <i class="fa-li fa fa-check"></i> Leap Motion, HTC Vive</li>
       </ul>
-      <!-- <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.?i=5ix9r8rqpnb&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script> -->
-    <!-- <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=59qpe4r4c9p&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script> -->
+      <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.?i=5ix9r8rqpnb&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
+    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=59qpe4r4c9p&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
     </section> -->
     <!-- //skill -->
     <!-- <section> -->
