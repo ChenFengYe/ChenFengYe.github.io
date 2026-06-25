@@ -1,0 +1,61 @@
+items:
+  - type: video
+    src: seedance2_0.mp4
+    size: 2x2
+    title: "Seedance 2.0"
+  - type: video
+    src: seedance1_5.mp4
+    size: 1x1
+    title: "Seedance 1.5"
+  - type: video
+    src: unimage.mp4
+    size: 1x1
+    title: "UniMAGE"
+  - type: image
+    src: image8.jpg
+    size: 2x1
+    title: |
+      Multi-view Static Dome System
+      Using more 92 6K cameras for static reconstruction
+  - type: video
+    src: media2_2.mp4
+    size: 1x1
+    title: "Dynamic Performance Capture"
+  - type: video
+    src: media3_2.mp4
+    size: 1x1
+    title: "Motion Capture"
+  - type: image
+    src: image1.jpg
+    size: 2x1
+    title: |
+      Multi-view Dynamic Dome System
+      Using more than 72 cameras for dynamic human reconstruction
+  - type: video
+    src: media4_2.mp4
+    size: 1x1
+    title: "Reconstructed 4D meshes"
+  - type: video
+    src: media5.mp4
+    size: 1x1
+    title: "Reconstructed clothed human meshes"
+  - type: image
+    src: image14.jpg
+    size: 1x2
+    title: "Motion-Latent-Diffusion"  
+  - type: video
+    src: media1.mp4
+    size: 1x1
+    title: "MotionGPT"
+  - type: video
+    src: media7.mp4
+    size: 1x1
+    title: "Dynamic 4D Mesh Player"
+  - type: video
+    src: meshxl.mp4
+    size: 1x1
+    title: "MeshXL"
+  - type: video
+    src: paint3d.mp4
+    size: 1x1
+    title: "Paint3D"

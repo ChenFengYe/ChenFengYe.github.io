@@ -1,0 +1,1 @@
+Multi-view Dome System Using more than 72 cameras for dynamic human reconstruction

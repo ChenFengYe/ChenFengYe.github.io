@@ -1,0 +1,490 @@
+<div class="gallery-wrapper">
+  <button class="gallery-nav prev" id="btn-prev" aria-label="Previous">&#10094;</button>
+  <div class="gallery-fog-left"></div>
+  <div class="gallery-container" id="video-gallery">
+    {{ $data := index .Site.Data "gallery_v2" }}
+    {{ range $data.items }}
+      {{ $colSpan := 1 }}
+      {{ $rowSpan := 1 }}
+      {{ if eq .size "2x1" }} {{ $colSpan = 2 }} {{ end }}
+      {{ if eq .size "1x2" }} {{ $rowSpan = 2 }} {{ end }}
+      {{ if eq .size "2x2" }} {{ $colSpan = 2 }} {{ $rowSpan = 2 }} {{ end }}
+      
+      <div class="gallery-item" 
+           style="grid-column: span {{ $colSpan }}; grid-row: span {{ $rowSpan }};"
+           data-size="{{ .size }}"
+           data-src="media/albums/gallery_v2/{{ .src }}">
+        {{ if eq .type "video" }}
+        <video autoplay loop muted playsinline poster="" onloadedmetadata="adjustSize(this)">
+          <source src="media/albums/gallery_v2/{{ .src }}" type="video/mp4">
+        </video>
+        {{ else }}
+        <img src="media/albums/gallery_v2/{{ .src }}" alt="{{ .title }}" onload="adjustSize(this)">
+        {{ end }}
+        {{ if .title }}
+        <div class="gallery-caption">{{ .title | replaceRE "\\n" "<br>" | safeHTML }}</div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+  <div class="gallery-fog-right"></div>
+  <button class="gallery-nav next" id="btn-next" aria-label="Next">&#10095;</button>
+</div>
+
+<style>
+.gallery-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+/* Fog effect overlays */
+.gallery-fog-left,
+.gallery-fog-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px; /* Width of the fog - reduced from 80px */
+  z-index: 5; /* Above content, below buttons */
+  pointer-events: none; /* Allow clicking through to items/scroll */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.gallery-wrapper:hover .gallery-fog-left,
+.gallery-wrapper:hover .gallery-fog-right {
+  opacity: 0;
+}
+
+.gallery-fog-left {
+  left: 40px; /* Start after the left button area */
+  background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.gallery-fog-right {
+  right: 40px; /* Start before the right button area */
+  background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-rows: repeat(2, 160px); /* Fixed height for rows - reduced from 200px */
+  grid-auto-flow: column;
+  grid-auto-columns: 213px; /* 4:3 aspect ratio based on 160px height (160 * 1.333) */
+  gap: 10px;
+  overflow-x: auto;
+  /* Remove CSS smooth scrolling to allow instant JS jumps for infinite loop */
+  scroll-behavior: auto; 
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  padding: 0; /* Remove padding to simplify width calculations */
+  margin: 0 40px; /* Use margin for button space instead */
+  
+  /* Optimize for GPU acceleration to fix stutter */
+  will-change: scroll-position;
+  transform: translateZ(0); 
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-container::-webkit-scrollbar { 
+  display: none;  /* Chrome/Safari */
+}
+
+/* ... (rest of styles same as before) ... */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+}
+
+.gallery-item video, .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.gallery-nav:hover {
+  background: #fff;
+}
+
+.gallery-nav.prev {
+  left: 0;
+}
+
+.gallery-nav.next {
+  right: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .gallery-container {
+    grid-template-rows: repeat(2, 120px); /* Reduced from 150px */
+    grid-auto-columns: 160px; /* Reduced from 200px */
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const gallery = document.getElementById('video-gallery');
+    const originalItems = Array.from(gallery.children);
+    const originalCount = originalItems.length;
+    
+    // We clone 2 sets to append and 2 sets to prepend to ensure enough buffer for wide screens
+    // Structure: [Clone Set 1][Clone Set 2] [Original Set] [Clone Set 1][Clone Set 2]
+    // Actually 1 set buffer is usually enough if the set is long enough. 
+    // Let's assume the set is reasonably long.
+    
+    // Append clones (Tail Buffer)
+    originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.classList.add('cloned-item');
+        gallery.appendChild(clone);
+    });
+    
+    // Prepend clones (Head Buffer)
+    originalItems.slice().reverse().forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.classList.add('cloned-item');
+        gallery.prepend(clone);
+    });
+    
+    let singleSetWidth = 0;
+    
+    // Function to measure width of one set
+    // We can't simply sum widths because of grid packing.
+    // We measure the offset difference between the first original item and the first appended clone.
+    const updateMetrics = () => {
+        // First original item is now at index 'originalCount' (since we prepended 'originalCount' items)
+        const firstOriginal = gallery.children[originalCount];
+        // First appended clone is at index 'originalCount * 2'
+        const firstAppendedClone = gallery.children[originalCount * 2];
+        
+        if (firstOriginal && firstAppendedClone) {
+            singleSetWidth = firstAppendedClone.offsetLeft - firstOriginal.offsetLeft;
+            
+            // Initial centering if not set
+            if (gallery.scrollLeft === 0) {
+                 gallery.scrollLeft = singleSetWidth;
+            }
+        }
+    };
+    
+    // Wait for layout
+    setTimeout(updateMetrics, 200);
+    window.addEventListener('resize', updateMetrics);
+    
+    // Infinite Scroll Logic
+    gallery.addEventListener('scroll', () => {
+        if (singleSetWidth === 0) return;
+        
+        const scrollLeft = gallery.scrollLeft;
+        
+        // Use a small epsilon for float comparison safety
+        const epsilon = 5;
+        
+        // Thresholds - Adjusted to be seamless
+        // If we scrolled fully into the Head Buffer (left side), jump forward
+        // We jump when we are exactly at the start of the buffer set to avoid visual glitch
+        // But scroll event might not fire exactly at 0.
+        // Let's use a range.
+        
+        if (scrollLeft <= epsilon) {
+             // Jump to the start of the Original Set (which is identical to start of Head Buffer)
+             // Head Buffer [0...W] | Original [W...2W]
+             // We are at ~0. Jump to W.
+            gallery.scrollLeft = singleSetWidth;
+        }
+        // If we scrolled fully into the Tail Buffer (right side), jump backward
+        // Original ends at 2W. Tail Buffer starts at 2W.
+        else if (scrollLeft >= singleSetWidth * 2 - epsilon) {
+             // Jump to the end of the Original Set (which is identical to end of Tail Buffer's first part)
+             // We are at ~2W. Jump to W.
+            gallery.scrollLeft = singleSetWidth;
+        }
+        
+        // However, the above logic only works if we hit the edges perfectly.
+        // The previous logic was jumping when crossing 0.5W and 1.5W.
+        // That logic causes a jump in the MIDDLE of a scroll if the user is dragging.
+        // But for button clicks, smooth scroll animates through the jump point.
+        // If we jump during a smooth scroll animation, it interrupts the animation = jerk.
+        
+        // Better approach for buttons:
+        // 1. Check bounds AFTER scroll finishes? No, continuous scroll needs continuous check.
+        // 2. Expand the buffer. We already have 1 set buffer.
+        // 3. The jerk happens because `gallery.scrollLeft += ...` stops the smooth scroll.
+        
+        // Solution: Do not jump during a smooth scroll if we are within safe buffer.
+        // Only jump when we are dangerously close to the edge.
+        // Or, wait until scroll stops to jump (debouncing).
+    });
+    
+    // Improved Scroll Handler with Debounce for "Snap Back"
+    let isScrolling;
+    
+    gallery.addEventListener('scroll', () => {
+        if (singleSetWidth === 0) return;
+        
+        // Clear timeout while scrolling
+        window.clearTimeout(isScrolling);
+        
+        const scrollLeft = gallery.scrollLeft;
+        
+        // If we are dangerously close to the absolute edges (running out of buffer), jump immediately
+        // Head Buffer is 0 to W. Original is W to 2W. Tail is 2W to 3W.
+        // Safe zone is 0.2W to 2.8W.
+        
+        if (scrollLeft < 10) {
+             gallery.scrollLeft += singleSetWidth;
+        } else if (scrollLeft > singleSetWidth * 3 - gallery.clientWidth - 10) {
+             gallery.scrollLeft -= singleSetWidth;
+        }
+        
+        // Set a timeout to snap back to the center "Original Set" zone after scrolling stops
+        // This ensures we always have max buffer for the next action
+        isScrolling = setTimeout(() => {
+            // Normalize position to be within [W, 2W]
+            // Current position relative to the repeating pattern
+            // The pattern repeats every singleSetWidth
+            
+            // We want to be in the middle set (Set index 1, starting at W)
+            // Current Set Index = Math.floor(scrollLeft / singleSetWidth)
+            
+            const currentSetIndex = Math.floor((scrollLeft + gallery.clientWidth / 2) / singleSetWidth);
+            
+            // If we are not in the primary set (index 1), shift us there silently
+            if (currentSetIndex !== 1) {
+                 const offsetInSet = scrollLeft % singleSetWidth;
+                 // It's safer to just add/subtract W if we are 1 set away
+                 if (currentSetIndex === 0) {
+                     gallery.scrollLeft += singleSetWidth;
+                 } else if (currentSetIndex === 2) {
+                     gallery.scrollLeft -= singleSetWidth;
+                 }
+            }
+        }, 150); // Run 150ms after scroll stops
+    });
+    
+    // Button Logic with Smooth Scroll
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    
+    const smoothScrollBy = (amount) => {
+        // Before scrolling, check if we need to recenter to ensure enough buffer
+        // If we are too far left (in Head Buffer), jump to Original
+        if (gallery.scrollLeft < singleSetWidth * 0.5) {
+            gallery.scrollLeft += singleSetWidth;
+        }
+        // If we are too far right (in Tail Buffer), jump to Original
+        else if (gallery.scrollLeft > singleSetWidth * 1.5) {
+            gallery.scrollLeft -= singleSetWidth;
+        }
+        
+        // Now we have enough buffer to scroll smoothly
+        gallery.scrollBy({
+            left: amount,
+            behavior: 'smooth'
+        });
+    };
+    
+    btnPrev.addEventListener('click', () => {
+        smoothScrollBy(-(213 * 2 + 10)); // Scroll 2 columns
+    });
+    
+    btnNext.addEventListener('click', () => {
+        smoothScrollBy(213 * 2 + 10); // Scroll 2 columns
+    });
+
+    // Auto-scroll logic
+    let autoScrollInterval;
+    
+    // Use floating point scroll tracking
+    let currentScroll = 0;
+    
+    // Use time-based animation for silky smoothness
+    let lastTime = 0;
+    const speedPixelsPerSecond = 20; // Adjust speed: 20px/s is slow and smooth
+    let isAutoScrolling = true;
+
+    const animateScroll = (timestamp) => {
+        if (!isAutoScrolling) {
+            lastTime = 0; // Reset timer when paused
+            requestAnimationFrame(animateScroll);
+            return;
+        }
+
+        // Ensure singleSetWidth is initialized
+        if (singleSetWidth === 0) {
+            requestAnimationFrame(animateScroll);
+            return;
+        }
+
+        if (lastTime === 0) {
+            lastTime = timestamp;
+            // Sync currentScroll with DOM state on resume
+            currentScroll = gallery.scrollLeft; 
+        }
+
+        const deltaTime = timestamp - lastTime;
+        lastTime = timestamp;
+        
+        // Calculate precise movement
+        const move = (speedPixelsPerSecond * deltaTime) / 1000;
+        
+        currentScroll += move;
+        
+        // Check bounds on the float value first
+        if (currentScroll >= singleSetWidth * 2) {
+             currentScroll -= singleSetWidth;
+             // Sync DOM immediately to avoid visual jump
+             gallery.scrollLeft = currentScroll; 
+        } else {
+            // Apply to DOM
+            gallery.scrollLeft = currentScroll;
+        }
+
+        requestAnimationFrame(animateScroll);
+    };
+
+    const startAutoScroll = () => {
+        isAutoScrolling = true;
+    };
+
+    const stopAutoScroll = () => {
+        isAutoScrolling = false;
+    };
+
+    // Start loop
+    requestAnimationFrame(animateScroll);
+
+    // Intersection Observer for visibility check
+    let isVisible = false;
+    let isHovering = false; // Add hover state tracking
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                isVisible = true;
+                // Resume animation if not hovered
+                if (!isHovering) {
+                    lastTime = 0; // Reset time to avoid jump
+                    startAutoScroll();
+                }
+            } else {
+                isVisible = false;
+                stopAutoScroll();
+            }
+        });
+    }, {
+        threshold: 0.1 // Start when 10% visible
+    });
+    
+    const galleryWrapper = document.querySelector('.gallery-wrapper');
+    observer.observe(galleryWrapper);
+
+    // Pause on hover
+    galleryWrapper.addEventListener('mouseenter', () => {
+        isHovering = true;
+        stopAutoScroll();
+    });
+    
+    galleryWrapper.addEventListener('mouseleave', () => {
+        isHovering = false;
+        if (isVisible) {
+            // Reset lastTime to avoid huge jumps
+            lastTime = 0;
+            startAutoScroll();
+        }
+    });
+
+    // Pause on touch/interaction
+    gallery.addEventListener('touchstart', stopAutoScroll);
+    gallery.addEventListener('touchend', () => {
+        setTimeout(() => {
+            if (isVisible) {
+                lastTime = 0;
+                startAutoScroll();
+            }
+        }, 2000);
+    });
+});
+
+function adjustSize(element) {
+  const item = element.closest('.gallery-item');
+  const size = item.getAttribute('data-size');
+  
+  if (size === 'auto') {
+    let width, height;
+    if (element.tagName === 'VIDEO') {
+      width = element.videoWidth;
+      height = element.videoHeight;
+    } else {
+      width = element.naturalWidth;
+      height = element.naturalHeight;
+    }
+    
+    if (width && height) {
+      const ratio = width / height;
+      let colSpan = 1;
+      let rowSpan = 1;
+      
+      if (ratio > 1.5) {
+        colSpan = 2; 
+      } else if (ratio < 0.7) {
+        rowSpan = 2; 
+      }
+      
+      item.style.gridColumn = `span ${colSpan}`;
+      item.style.gridRow = `span ${rowSpan}`;
+    }
+  }
+}
+
+// Mouse wheel scrolling
+const galleryContainer = document.getElementById('video-gallery');
+galleryContainer.addEventListener('wheel', (evt) => {
+  evt.preventDefault();
+  galleryContainer.scrollLeft += evt.deltaY;
+});
+</script>

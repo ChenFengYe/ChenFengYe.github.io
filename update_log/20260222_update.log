@@ -1,0 +1,249 @@
+---
+hugo server -D
+---
+TODO
+1. 更新Experiences
+  Senior Research Scientist ByteDance | 字节跳动的工作内容 
+  先说Win xxx award xx
+  在介绍工作内容
+
+  Research Scientist Tencent | 腾讯
+
+---
+Done
+
+1. 优化gallery 动态功能：整个gallery，收尾相接，循环展示，比如，按动左按钮到头后，开始反向加载末尾的视频，右按钮到头后，开始从头加载视频
+   
+
+1. 更新about me
+  参考 /Users/bytedance/Library/CloudStorage/OneDrive-Personal/1_资料/1 个人文件/11 个人简历/overleaf_cv_git/sections/about_me.tex这里的内容，适配到html的格式
+  更新 /Users/bytedance/Library/CloudStorage/OneDrive-Personal/1_资料/1 个人文件/16 个人网站/webpage/content/authors/admin/_index.md
+
+
+1. 更新gallery
+ - image1.jpg 1x2
+ - media2_2  1x1
+ - media3_2 1x1
+ - image1.jpg 1x2
+ - media4_2 1x1
+ - media5 1x1
+ - Demo1 1x1
+ - Demo7 1x1
+ -其他的
+ 
+  增加video的示例
+  - 我希望在红框位置增加左右的按钮，方便移动（同时也支持 滚轮滚动）
+  - 然后整体grid设计，为行列为2xn的gird
+  - 每个视频或者图片单元是2x1（宽组件）1x2(竖组件)1x1小组件
+  - 每1x2或者2x2为一个移动单元
+  - 每个单元的比例大约是宽高是 4:3
+  - 内容上：
+    - 保持现有的组件设计模块不变
+    - 参考我publication中的video tags下的文章的featured.mp4，再给我增加1~2个video gallery的单元
+
+
+
+---
+Done
+1. 更新News
+  - 2026/02 Seedance 2.0发布
+  - 2026/02 ViBES{给主页链接} and InterAgent{给主页链接}  accepted to CVPR 2026, congrats to Juze Zhang{https://juzezhang.github.io/} and Bin Li
+  - 2026/01  UniMAGE and FlowAct-R1 is  public xxx, congrats to Jiaxu Zhang{https://kebii.github.io/} and Tianshu Hu{https://scholar.google.com/citations?user=BIixVT0AAAAJ&hl=en}
+  - 2026/01 Video-as-Prompt{给主页链接} and MotionGPT3{给主页链接} accepted to ICLR 2026, congrats to Yuxuan Bian{https://yxbian23.github.io/} and Bingfan Zhu{https://juzezhang.github.io/}
+  - 2025/12 Seedance 1.5 pro 发布
+  - 2025/08 Motion2motion  accepted to SIGGRAPH Aisa 2025, congrats to Ling-Hao Chen{https://lhchen.top/}
+
+2. 隐藏掉Software Engineer Summer Intern Deerev | 飞路
+
+----------
+
+motion2motion
+SIGGRAPH Asia 2025
+Ling-Hao Chen, Yuhong Zhang, Zixin Yin, Zhiyang Dou, Xin Chen, Jingbo Wang, Taku Komura, Lei Zhang
+18 Aug 2025
+
+https://lhchen.top/Motion2Motion/
+https://arxiv.org/pdf/2508.13139
+https://arxiv.org/abs/2508.13139
+https://github.com/LinghaoChan/Motion2Motion_codes
+github star on 
+视频 https://lhchen.top/images/m2m.mp4，这个视频保持宽度不变 高度上面裁剪10% 下面裁剪3%
+@inproceedings{chen2025motion2motion,
+  title={Motion2motion: Cross-topology motion transfer with sparse correspondence},
+  author={Chen, Ling-Hao and Zhang, Yuhong and Yin, Zixin and Dou, Zhiyang and Chen, Xin and Wang, Jingbo and Komura, Taku and Zhang, Lei},
+  booktitle={Proceedings of the SIGGRAPH Asia 2025 Conference Papers},
+  pages={1--11},
+  year={2025}
+}
+---
+
+增加publication，如果暂时缺失视频的就先临时用meshxl的featured.mp4
+
+1. MikuDance: Animating Character Art with Mixed Motion Dynamics
+tag video 2025
+
+Jiaxu Zhang, Xianfang Zeng, Xin Chen, Wei Zuo, Gang Yu, Zhigang Tu
+[Jiaxu Zhang](https://kebii.github.io/), [Xianfang Zeng](https://scholar.google.com/citations?user=tgDc0fsAAAAJ&hl=en), [Xin Chen](https://chenxin.tech/), [Wei Zuo](https://liris.cnrs.fr/en/member-page/wei-zuo), [Gang Yu](https://www.skicyyu.org/), [Zhigang Tu](http://tuzhigang.cn/)
+
+https://arxiv.org/abs/2411.08656
+https://arxiv.org/pdf/2411.08656
+https://github.com/Kebii/MikuDance
+打开github stars
+
+@inproceedings{zhang2025mikudance,
+  title={Mikudance: Animating character art with mixed motion dynamics},
+  author={Zhang, Jiaxu and Zeng, Xianfang and Chen, Xin and Zuo, Wei and Yu, Gang and Tu, Zhigang},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={19689--19699},
+  year={2025}
+}
+
+2. DreamDance: Animating Character Art via Inpainting Stable Gaussian Worlds
+Jiaxu Zhang, Xianfang Zeng, Xin Chen, Wei Zuo, Gang Yu, Guosheng Lin, Zhigang Tu
+tag video 2025
+
+https://arxiv.org/abs/2505.24733
+https://arxiv.org/pdf/2505.24733
+https://kebii.github.io/DreamDance/
+
+@article{zhang2025dreamdance,
+  title={DreamDance: Animating Character Art via Inpainting Stable Gaussian Worlds},
+  author={Zhang, Jiaxu and Zeng, Xianfang and Chen, Xin and Zuo, Wei and Yu, Gang and Lin, Guosheng and Tu, Zhigang},
+  journal={arXiv preprint arXiv:2505.24733},
+  year={2025}
+}
+
+---
+
+3. ViBES: A Conversational Agent with Behaviorally-Intelligent 3D Virtual Bod
+tags motion human 2025
+https://arxiv.org/pdf/2512.14234
+https://arxiv.org/abs/2512.14234
+https://ai.stanford.edu/~juze/ViBES/
+https://github.com/Juzezhang/ViBES
+dataset https://huggingface.co/datasets/JuzeZhang/Converse3D
+打开github stars
+Juze Zhang, Changan Chen, Xin Chen, Heng Yu, Tiange Xiang, Ali Sartaz Khan, Shrinidhi K. Lakshmikanth, Ehsan Adeli
+@article{zhang2025vibes,
+  title={ViBES: A Conversational Agent with Behaviorally-Intelligent 3D Virtual Body},
+  author={Zhang, Juze and Chen, Changan and Chen, Xin and Yu, Heng and Xiang, Tiange and Khan, Ali Sartaz and Lakshmikanth, Shrinidhi K and Adeli, Ehsan},
+  journal={arXiv preprint arXiv:2512.14234},
+  year={2025}
+}
+
+cvpr 2026
+
+4. InterAgent: Physics-based Multi-agent Command Execution via Diffusion on Interaction Graphs
+tags motion human 2025
+cvpr 2026
+https://binlee26.github.io/InterAgent-Page/
+https://arxiv.org/abs/2512.07410
+https://arxiv.org/pdf/2512.07410
+视频 用这个图片https://binlee26.github.io/InterAgent-Page/all/images/teaser.png
+Bin Li, Ruichi Zhang, Han Liang, Jingyan Zhang, Juze Zhang, Xin Chen, Lan Xu, Jingyi Yu, Jingya Wang
+@article{li2025interagent,
+  title={InterAgent: Physics-based Multi-agent Command Execution via Diffusion on Interaction Graphs},
+  author={Li, Bin and Zhang, Ruichi and Liang, Han and Zhang, Jingyan and Zhang, Juze and Chen, Xin and Xu, Lan and Yu, Jingyi and Wang, Jingya},
+  journal={arXiv preprint arXiv:2512.07410},
+  year={2025}
+}
+
+5. MotionGPT3: Human Motion as a Second Modality
+iclr 2026
+https://motiongpt3.github.io/
+https://arxiv.org/abs/2506.24086
+https://arxiv.org/pdf/2506.24086
+https://github.com/OpenMotionLab/MotionGPT3
+视频直接用这个图https://motiongpt3.github.io/static/figures/training.png
+Bingfan Zhu, Biao Jiang, Sunyi Wang, Shixiang Tang, Tao Chen, Linjie Luo, Youyi Zheng, Xin Chen
+Xin Chen和Youyi Zheng是Corresponding author
+@article{zhu2025motiongpt3,
+  title={Motiongpt3: Human motion as a second modality},
+  author={Zhu, Bingfan and Jiang, Biao and Wang, Sunyi and Tang, Shixiang and Chen, Tao and Luo, Linjie and Zheng, Youyi and Chen, Xin},
+  journal={arXiv preprint arXiv:2506.24086},
+  year={2025}
+}
+
+更新News
+
+1. seedance 2.0  seedance 1.5 pro  
+2. CVPR 2026 
+2. Video as prompt iclr 2026
+xxx
+
+---
+
+增加publication, 视
+频还是复制meshxl的临时用下
+
+1. ViBES: A Conversational Agent with Behaviorally-Intelligent 3D Virtual Bod
+tags motion human 2025
+
+
+cvpr 2026
+
+2. InterAgent: Physics-based Multi-agent Command Execution via Diffusion on Interaction Graphs
+tags motion human 2025
+cvpr 2026
+
+
+3. MotionGPT3: Human Motion as a Second Modality
+iclr 2026
+
+更新News
+
+1. seedance 2.0  seedance 1.5 pro  
+2. CVPR 2026 
+2. Video as prompt iclr 2026
+xxx
+---
+增加publication, 视频还是复制meshxl的临时用下
+
+1. FlowAct-R1: Towards Interactive Humanoid Video Generation
+Lizhen Wang, Yongming Zhu, Zhipeng Ge, Youwei Zheng, Longhao Zhang, Tianshu Hu,
+Shiyang Qin, Mingshuang Luo, Jiaxu Zhang, Xin Chen, Yulong Wang, Zerong Zheng,
+Jianwen Jiang, Chao Liang, Weifeng Chen, Xing Wang, Yuan Zhang, Mingyuan Gao
+
+https://arxiv.org/pdf/2601.10103.pdf
+https://arxiv.org/abs/2601.10103
+https://grisoon.github.io/FlowAct-R1/
+15 Jan 2026
+
+@article{wang2026flowact,
+  title={FlowAct-R1: Towards Interactive Humanoid Video Generation},
+  author={Wang, Lizhen and Zhu, Yongming and Ge, Zhipeng and Zheng, Youwei and Zhang, Longhao and Hu, Tianshu and Qin, Shiyang and Luo, Mingshuang and Zhang, Jiaxu and Chen, Xin and others},
+  journal={arXiv preprint arXiv:2601.10103},
+  year={2026}
+}
+
+2. 
+Bridging Your Imagination with Audio-Video Generation via a Unified Director
+Jiaxu Zhang Tianshu Hu Yuan Zhang Zenan Li
+Linjie Luo Guosheng Lin, Xin Chen
+我和Tianshu Hu的名字加个Project lead
+https://arxiv.org/pdf/2512.23222.pdf
+https://arxiv.org/abs/2512.23222
+https://kebii.github.io/UniMAGE/
+1 Jan 2026
+@article{zhang2025bridging,
+  title={Bridging Your Imagination with Audio-Video Generation via a Unified Director},
+  author={Zhang, Jiaxu and Hu, Tianshu and Zhang, Yuan and Li, Zenan and Luo, Linjie and Lin, Guosheng and Chen, Xin},
+  journal={arXiv preprint arXiv:2512.23222},
+  year={2025}
+}
+
+3. Video-As-Prompt: Unified Semantic Control for Video Generation
+Yuxuan Bian, Xin Chen, Zenan Li, Tiancheng Zhi, Shen Sang, Linjie Luo, Qiang Xu
+给我的名字加个Project lead
+https://arxiv.org/pdf/2510.20888.pdf
+https://arxiv.org/abs/2510.20888
+https://bytedance.github.io/Video-As-Prompt/
+github https://github.com/bytedance/Video-As-Prompt
+HuggingFace https://huggingface.co/collections/ByteDance/video-as-prompt
+Dataset https://huggingface.co/datasets/BianYx/VAP-Data
+@article{bian2025video,
+  title={Video-As-Prompt: Unified Semantic Control for Video Generation},
+  author={Bian, Yuxuan and Chen, Xin and Li, Zenan and Zhi, Tiancheng and Sang, Shen and Luo, Linjie and Xu, Qiang},
+  journal={arXiv preprint arXiv:2510.20888},
+  year={2025}
+}

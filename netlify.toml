@@ -1,0 +1,42 @@
+[build]
+  command = "hugo --gc --minify -b $URL"
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.123.3"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.production.environment]
+  HUGO_ENV = "production"
+
+[context.deploy-preview]
+  command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+  command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
+  [plugins.inputs]
+    debug = true
+
+[[redirects]]
+  from = "/mld"
+  to = "/mld/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/TightCap"
+  to = "/TightCap/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/AutoSweep.html"
+  to = "/files/Paper/TVCG2018_AutoSweep/project_page_AutoSweep/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/SportsCap.html"
+  to = "/files/Paper/IJCV2020_Sport/project_page_SportsCap/index.html"
+  status = 200
+  

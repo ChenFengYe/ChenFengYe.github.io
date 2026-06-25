@@ -1,0 +1,44 @@
+# Theme metadata
+name = "chris"
+
+# Optional Google font URL
+# google_fonts = "family=Lato:wght@400;700&family=Merriweather&family=Roboto+Mono"
+
+
+[light]
+  # Primary
+  primary = "#4B5CC4"
+
+  # Menu
+  menu_primary = "#4B5CC4"
+  menu_text = "rgba(255,255,255,0.6)"
+  menu_text_active = "rgba(255,255,255,1)"
+  menu_title = "#fff"
+
+  # Backgrounds
+  home_section_odd = "#ffffff"
+  home_section_even = "#f6f6f6"
+  # home_section_even = "#f9f7f6"
+
+  # links
+  link_highlight_name = "#715548"
+
+##########################################################
+# 棕色
+# [light]
+#   # Primary
+#   primary = "#795548"
+# 
+# 
+#   # Menu
+#   menu_primary = "#795548"
+#   menu_text = "rgba(255,255,255,0.6)"
+#   menu_text_active = "rgba(255,255,255,1)"
+#   menu_title = "#fff"
+# 
+#   # Backgrounds
+#   home_section_odd = "#ffffff"
+#   home_section_even = "#f9f7f6"
+# 
+#   # links
+#   link_highlight_name = "#715548"
