@@ -15,9 +15,7 @@
            data-size="{{ .size }}"
            data-src="media/albums/gallery_v2/{{ .src }}">
         {{ if eq .type "video" }}
-        <video autoplay loop muted playsinline poster="" onloadedmetadata="adjustSize(this)">
-          <source src="media/albums/gallery_v2/{{ .src }}" type="video/mp4">
-        </video>
+        <video autoplay loop muted playsinline poster="" preload="none" data-gallery-lazy-video data-src="media/albums/gallery_v2/{{ .src }}" data-type="video/mp4" onloadedmetadata="adjustSize(this)"></video>
         {{ else }}
         <img src="media/albums/gallery_v2/{{ .src }}" alt="{{ .title }}" onload="adjustSize(this)">
         {{ end }}

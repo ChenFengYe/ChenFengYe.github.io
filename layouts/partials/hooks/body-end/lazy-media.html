@@ -1,0 +1,64 @@
+<script>
+(function () {
+  const loadVideo = (video) => {
+    if (!video || video.dataset.loaded === 'true') return;
+
+    const src = video.dataset.src;
+    if (!src) return;
+
+    if (!video.querySelector('source')) {
+      const source = document.createElement('source');
+      source.src = src;
+      source.type = video.dataset.type || 'video/mp4';
+      video.appendChild(source);
+    }
+
+    video.dataset.loaded = 'true';
+    video.load();
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(function () {});
+    }
+  };
+
+  const loadPublicationVideos = (selector) => {
+    document.querySelectorAll('.projects-container .isotope-item').forEach((item) => {
+      if (selector && selector !== '*' && !item.matches(selector)) return;
+      item.querySelectorAll('video[data-publication-lazy-video]').forEach(loadVideo);
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    loadPublicationVideos(document.querySelector('.default-project-filter')?.textContent || '.js-id-selected');
+
+    document.querySelectorAll('.project-filters a[data-filter]').forEach((button) => {
+      button.addEventListener('click', function () {
+        loadPublicationVideos(button.getAttribute('data-filter'));
+      });
+    });
+
+    const galleryWrapper = document.querySelector('.gallery-wrapper');
+    if (!galleryWrapper) return;
+
+    const loadGalleryVideos = () => {
+      const videos = galleryWrapper.querySelectorAll('video[data-gallery-lazy-video]');
+      videos.forEach((video, index) => {
+        window.setTimeout(() => loadVideo(video), index * 120);
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          loadGalleryVideos();
+          obs.disconnect();
+        });
+      }, {rootMargin: '160px 0px', threshold: 0.01});
+      observer.observe(galleryWrapper);
+    } else {
+      loadGalleryVideos();
+    }
+  });
+})();
+</script>

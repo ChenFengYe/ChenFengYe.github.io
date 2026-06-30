@@ -1,0 +1,98 @@
+{{ $item := .item }}
+{{ $widget := .page }}
+{{ $index := .index }}
+{{ $load_media := .load_media | default false }}
+
+{{ $do_link := true }}
+{{ if $item.Params.external_link | or $item.Content }}
+  {{ $do_link = true }}
+{{ else }}
+  {{ $do_link = false }}
+{{ end }}
+
+{{ $link := $item.Params.external_link | default $item.RelPermalink }}
+{{ $target := .target }}
+
+{{/* Get summary. */}}
+{{ $summary := "" }}
+{{ if $item.Params.summary }}
+  {{ $summary = $item.Params.summary | markdownify | emojify }}
+{{ else if $item.Params.abstract }}
+  {{ $summary = $item.Params.abstract | markdownify | emojify }}
+{{ end }}
+
+{{ $order := "" }}
+{{ if isset $widget "Params" }}
+  {{ if and ($widget.Params.design.flip_alt_rows | default true) (not (modBool $index 2)) }}
+    {{ $order = "order-md-2" }}
+  {{ end }}
+{{ else if and ($widget.design.flip_alt_rows | default true) (not (modBool $index 2)) }}
+  {{ $order = "order-md-2" }}
+{{ end }}
+
+
+<div class="col-lg-12 mb-4 view-showcase">
+  <div class="row align-items-start">
+    <div class="col-12 col-md-9 pl-4">
+      <div class="section-subheading article-title mb-0 mt-0">
+        {{- if $do_link}}<a href="{{ $link }}" {{ $target | safeHTMLAttr }}>{{end -}}
+        {{ $item.Title | markdownify | emojify }}
+        {{- if $do_link}}</a>{{end -}}
+      </div>
+
+      {{ if eq $item.Type "event" }}
+      <div class="article-metadata">
+        {{ if $item.Params.authors }}
+        <div>
+          {{ partial "page_metadata_authors" $item }}
+        </div>
+        {{ end }}
+        <span>
+          {{ partial "functions/get_event_dates" $item }}
+        </span>
+        {{ with $item.Params.location }}
+        <span class="middot-divider"></span>
+        <span>{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ else }}
+        {{ partial "page_metadata" (dict "page" $item "is_list" 1) }}
+      {{ end }}
+
+      {{ with $summary }}
+      <div class="article-style">
+        {{ . }}
+      </div>
+      {{ end }}
+
+      <div class="btn-links">
+        {{ partial "page_links" (dict "page" $item "is_list" 0) }}
+      </div>
+      
+    </div>
+
+    <div class="col-12 col-md-3 pr-0 order-first {{$order}}">
+      {{/* First, attempt to fetch the featured video */}}
+      {{ $video_resource := partial "functions/get_featured_video.html" $item }}
+      {{ with $video_resource }}
+        {{/* Non-default filter videos keep their URL in data-src until the user selects that filter. */}}
+        <video width="540" height="auto" autoplay loop muted playsinline preload="{{ if $load_media }}metadata{{ else }}none{{ end }}" data-publication-lazy-video data-src="{{ .RelPermalink }}" data-type="{{ .MediaType.Type }}">
+          {{ if $load_media }}<source src="{{ .RelPermalink }}" type="{{ .MediaType.Type }}">{{ end }}
+          Your browser does not support the video tag.
+        </video>
+      {{ else }}
+        {{/* Fallback to featured image if no video is found */}}
+        {{ $image_resource := partial "blox-core/functions/get_featured_image.html" $item }}
+        {{ with $image_resource }}
+          {{ $image := . }}
+          {{/* Handle GIFs differently to avoid resizing issues */}}
+          {{ if ne $image.MediaType.SubType "gif" }}{{ $image = $image.Process "resize 540x webp" }}{{ end }}
+          {{ if $do_link }}<a href="{{ $link }}" {{ $target | safeHTMLAttr }}>{{ end }}
+            <img src="{{ $image.RelPermalink }}" height="{{ $image.Height }}" width="{{ $image.Width }}"
+                 alt="{{ $item.Title }}" loading="lazy" style="width: 540px; height: auto; object-fit: cover;">
+          {{ if $do_link }}</a>{{ end }}
+        {{ end }}
+      {{ end }}
+    </div>    
+  </div>
+</div>
