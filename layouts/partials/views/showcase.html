@@ -75,9 +75,8 @@
       {{/* First, attempt to fetch the featured video */}}
       {{ $video_resource := partial "functions/get_featured_video.html" $item }}
       {{ with $video_resource }}
-        {{/* Non-default filter videos keep their URL in data-src until the user selects that filter. */}}
-        <video width="540" height="auto" autoplay loop muted playsinline preload="{{ if $load_media }}metadata{{ else }}none{{ end }}" data-publication-lazy-video data-src="{{ .RelPermalink }}" data-type="{{ .MediaType.Type }}">
-          {{ if $load_media }}<source src="{{ .RelPermalink }}" type="{{ .MediaType.Type }}">{{ end }}
+        {{/* Videos keep their URL in data-src so JS can enforce the page-level loading priority. */}}
+        <video width="540" height="auto" autoplay loop muted playsinline preload="none" data-publication-lazy-video{{ if $load_media }} data-publication-initial{{ end }} data-src="{{ .RelPermalink }}" data-type="{{ .MediaType.Type }}">
           Your browser does not support the video tag.
         </video>
       {{ else }}

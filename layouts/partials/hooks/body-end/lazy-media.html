@@ -1,5 +1,27 @@
 <script>
 (function () {
+  const queueVideos = (videos, delayStep, onComplete) => {
+    if (!videos.length) {
+      if (onComplete) onComplete();
+      return;
+    }
+
+    videos.forEach((video, index) => {
+      window.setTimeout(() => {
+        loadVideo(video);
+        if (index === videos.length - 1 && onComplete) onComplete();
+      }, index * delayStep);
+    });
+  };
+
+  const runWhenIdle = (callback, timeout) => {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(callback, {timeout});
+    } else {
+      window.setTimeout(callback, timeout);
+    }
+  };
+
   const loadVideo = (video) => {
     if (!video || video.dataset.loaded === 'true') return;
 
@@ -22,14 +44,17 @@
   };
 
   const loadPublicationVideos = (selector) => {
+    const videos = [];
     document.querySelectorAll('.projects-container .isotope-item').forEach((item) => {
       if (selector && selector !== '*' && !item.matches(selector)) return;
-      item.querySelectorAll('video[data-publication-lazy-video]').forEach(loadVideo);
+      item.querySelectorAll('video[data-publication-lazy-video]').forEach((video) => videos.push(video));
     });
+    queueVideos(videos, 90);
   };
 
   document.addEventListener('DOMContentLoaded', function () {
-    loadPublicationVideos(document.querySelector('.default-project-filter')?.textContent || '.js-id-selected');
+    const defaultFilter = document.querySelector('.default-project-filter')?.textContent || '.js-id-selected';
+    loadPublicationVideos(defaultFilter);
 
     document.querySelectorAll('.project-filters a[data-filter]').forEach((button) => {
       button.addEventListener('click', function () {
@@ -40,12 +65,38 @@
     const galleryWrapper = document.querySelector('.gallery-wrapper');
     if (!galleryWrapper) return;
 
+    let galleryStarted = false;
+    let publicationBackfillStarted = false;
+
+    const loadRemainingPublicationVideos = () => {
+      if (publicationBackfillStarted) return;
+      publicationBackfillStarted = true;
+      runWhenIdle(() => {
+        const selector = defaultFilter === '*'
+          ? '.projects-container .isotope-item video[data-publication-lazy-video]'
+          : '.projects-container .isotope-item:not(' + defaultFilter + ') video[data-publication-lazy-video]';
+        const videos = Array.from(document.querySelectorAll(selector));
+        queueVideos(videos, 450);
+      }, 6000);
+    };
+
     const loadGalleryVideos = () => {
-      const videos = galleryWrapper.querySelectorAll('video[data-gallery-lazy-video]');
-      videos.forEach((video, index) => {
-        window.setTimeout(() => loadVideo(video), index * 120);
+      if (galleryStarted) return;
+      galleryStarted = true;
+
+      const originalVideos = Array.from(galleryWrapper.querySelectorAll(
+        '.gallery-item:not(.cloned-item) video[data-gallery-lazy-video]'
+      ));
+      const clonedVideos = Array.from(galleryWrapper.querySelectorAll(
+        '.gallery-item.cloned-item video[data-gallery-lazy-video]'
+      ));
+
+      queueVideos(originalVideos, 80, () => {
+        queueVideos(clonedVideos, 140, loadRemainingPublicationVideos);
       });
     };
+
+    window.setTimeout(loadGalleryVideos, 900);
 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries, obs) => {
